@@ -1,3 +1,40 @@
+async function fetchSubjects() {
+  try {
+    const response = await fetch('/api/subjects', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+
+  } catch (error) {
+    console.error('Ошибка при получении данных:', error);
+    throw error;
+  }
+}
+
+// Использование
+try {
+  const subjectsData = await fetchSubjects();
+  console.log('Получены данные:', subjectsData);
+
+  // Пример обработки данных
+  subjectsData.forEach(subject => {
+    console.log(subject);
+  });
+
+} catch (error) {
+  // Обработка ошибок
+  console.error('Не удалось загрузить данные:', error);
+}
+
 const cardText = {
   minimum: [
     "8−10 онлайн-вебинаров<br>в месяц (+ записи)",
