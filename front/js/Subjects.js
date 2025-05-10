@@ -6,6 +6,7 @@ const subjects = [
     priceInstallment: [9860, 13770, 16760],
     startText: "18&nbsp;марта",
     durationText: "2.5&nbsp;месяца",
+    durationNumber: 1,
     cardText: {
       minimum: [
         "8−10 онлайн-вебинаров<br>в месяц (+ записи)",
@@ -38,6 +39,7 @@ const subjects = [
     priceInstallment: [7695, 10745, 13075],
     startText: "3&nbsp;апреля",
     durationText: "2&nbsp;месяца",
+    durationNumber: 1,
     cardText: {
       minimum: [
         "8−10 онлайн-вебинаров<br>в месяц (+ записи)",
@@ -70,6 +72,7 @@ const subjects = [
     priceInstallment: [9860, 13770, 16760],
     startText: "18&nbsp;марта",
     durationText: "2.5&nbsp;месяца",
+    durationNumber: 1,
     cardText: {
       minimum: [
         "8−10 онлайн-вебинаров<br>в месяц (+ записи)",
@@ -102,6 +105,7 @@ const subjects = [
     priceInstallment: [7695, 10745, 13075],
     startText: "21&nbsp;марта",
     durationText: "2&nbsp;месяца",
+    durationNumber: 1,
     cardText: {
       minimum: [
         "12+ онлайн-вебинаров в месяц (+ записи)",
