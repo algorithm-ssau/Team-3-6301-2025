@@ -1,7 +1,7 @@
 package com.example.demo.api.controller;
 
+import com.example.demo.api.dto.SubjectDto;
 import com.example.demo.service.SubjectService;
-import com.example.demo.model.Subject;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +19,14 @@ public class SubjectController {
 
     // GET /api/subjects — вернуть весь список
     @GetMapping
-    public List<Subject> getAll() {
+    public List<SubjectDto> getAll() {
         return service.findAll();
     }
 
     // POST /api/subjects — добавить новый Subject
     @PostMapping
-    public ResponseEntity<Subject> create(@RequestBody Subject subject) {
-        Subject saved = service.create(subject);
+    public ResponseEntity<SubjectDto> create(@RequestBody SubjectDto subject) {
+        SubjectDto saved = service.create(subject);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(saved);
