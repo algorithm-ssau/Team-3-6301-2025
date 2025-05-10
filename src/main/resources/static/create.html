@@ -1,0 +1,259 @@
+<!--
+Place this file under src/main/resources/static/create.html
+Dynamic form for adding card entries interactively
+-->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить курс</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --background: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text: #334155;
+            --border: #E2E8F0;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text);
+        }
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .card-entries {
+            margin-top: 20px;
+        }
+        .entry-row {
+            display: grid;
+            grid-template-columns: 1fr 3fr auto;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .entry-row button {
+            padding: 5px 10px;
+            background: #EF4444;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        .entry-row button:hover {
+            background: #DC2626;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background: #3b38b3;
+        }
+        .nav-link {
+            display: block;
+            text-align: center;
+            margin: 0 auto 20px;
+            max-width: 200px;
+            padding: 10px 20px;
+            background: var(--border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .nav-link:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<h1>Добавить новый курс</h1>
+<a href="index.html" class="nav-link">← Назад к курсам</a>
+<form id="subject-form">
+    <div class="form-group">
+        <label for="name">Код предмета (name)</label>
+        <input type="text" id="name" required placeholder="rus, inf, math...">
+    </div>
+    <div class="form-group">
+        <label for="startText">Старт (startText)</label>
+        <input type="text" id="startText" required placeholder="22 апреля">
+    </div>
+    <div class="form-group">
+        <label for="durationText">Длительность (durationText)</label>
+        <input type="text" id="durationText" required placeholder="1.5 месяца">
+    </div>
+    <div class="form-group">
+        <label for="durationNumber">Длительность (durationNumber)</label>
+        <input type="number" id="durationNumber" required step="0.1" placeholder="1.5">
+    </div>
+
+    <h3>Цены</h3>
+    <div class="form-group">
+        <label>MINIMUM</label>
+        <input type="number" id="min_full" required placeholder="Полная цена">
+        <input type="number" id="min_monthly" required placeholder="Ежемесячно">
+        <input type="number" id="min_installment" required placeholder="Рассрочка">
+    </div>
+    <div class="form-group">
+        <label>STANDARD</label>
+        <input type="number" id="std_full" required placeholder="Полная цена">
+        <input type="number" id="std_monthly" required placeholder="Ежемесячно">
+        <input type="number" id="std_installment" required placeholder="Рассрочка">
+    </div>
+    <div class="form-group">
+        <label>PREMIUM</label>
+        <input type="number" id="prem_full" required placeholder="Полная цена">
+        <input type="number" id="prem_monthly" required placeholder="Ежемесячно">
+        <input type="number" id="prem_installment" required placeholder="Рассрочка">
+    </div>
+
+    <h3>Пункты карточек</h3>
+    <div class="form-group">
+        <label for="tier-select">Уровень</label>
+        <select id="tier-select">
+            <option value="MINIMUM">MINIMUM</option>
+            <option value="STANDARD">STANDARD</option>
+            <option value="PREMIUM">PREMIUM</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="textLine">Текст пункта</label>
+        <input type="text" id="textLine" placeholder="Опишите пункт">
+    </div>
+    <button type="button" class="button" id="add-entry">Добавить пункт</button>
+
+    <div class="card-entries" id="card-entries">
+        <!-- dynamically added entries appear here -->
+    </div>
+
+    <button type="submit" class="button">Создать курс</button>
+</form>
+
+<script>
+    const entries = [];
+    const container = document.getElementById('card-entries');
+    document.getElementById('add-entry').addEventListener('click', () => {
+        const tier = document.getElementById('tier-select').value;
+        const text = document.getElementById('textLine').value.trim();
+        if (!text) return alert('Введите текст пункта');
+        const entry = { tier, textLine: text };
+        entries.push(entry);
+        renderEntries();
+        document.getElementById('textLine').value = '';
+    });
+
+    function renderEntries() {
+        container.innerHTML = '';
+        entries.forEach((e, i) => {
+            const row = document.createElement('div');
+            row.className = 'entry-row';
+            row.innerHTML = `
+          <div>${e.tier}</div>
+          <div>${e.textLine}</div>
+          <button type="button">Удалить</button>
+        `;
+            row.querySelector('button').addEventListener('click', () => {
+                entries.splice(i, 1);
+                renderEntries();
+            });
+            container.appendChild(row);
+        });
+    }
+
+    document.getElementById('subject-form').addEventListener('submit', async e => {
+        e.preventDefault();
+        const subject = {
+            name: document.getElementById('name').value,
+            startText: document.getElementById('startText').value,
+            durationText: document.getElementById('durationText').value,
+            durationNumber: parseFloat(document.getElementById('durationNumber').value),
+            prices: {
+                MINIMUM: {
+                    full: parseInt(document.getElementById('min_full').value),
+                    monthly: parseInt(document.getElementById('min_monthly').value),
+                    installment: parseInt(document.getElementById('min_installment').value)
+                },
+                STANDARD: {
+                    full: parseInt(document.getElementById('std_full').value),
+                    monthly: parseInt(document.getElementById('std_monthly').value),
+                    installment: parseInt(document.getElementById('std_installment').value)
+                },
+                PREMIUM: {
+                    full: parseInt(document.getElementById('prem_full').value),
+                    monthly: parseInt(document.getElementById('prem_monthly').value),
+                    installment: parseInt(document.getElementById('prem_installment').value)
+                }
+            },
+            cardEntries: entries
+        };
+        try {
+            const res = await fetch('/api/subjects', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(subject)
+            });
+            if (!res.ok) throw new Error(await res.text());
+            const created = await res.json();
+            alert(`Курс создан с ID = ${created.id}`);
+            window.location.href = 'index.html';
+        } catch (err) {
+            console.error(err);
+            alert('Ошибка создания: ' + err.message);
+        }
+    });
+</script>
+</body>
+</html>

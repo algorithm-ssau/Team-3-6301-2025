@@ -1,0 +1,189 @@
+<!--
+Improved interactive design for course dashboard with navigation link
+Place this file under src/main/resources/static/index.html
+-->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наши Курсы</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --secondary: #E0E7FF;
+            --background: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-color: #334155;
+            --accent: #6366F1;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text-color);
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        .nav-link {
+            display: block;
+            text-align: center;
+            margin: 0 auto 30px;
+            max-width: 200px;
+            padding: 10px 20px;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .nav-link:hover {
+            background: var(--primary);
+        }
+        .subjects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .subject-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+        .subject-card:hover {
+            transform: translateY(-5px);
+        }
+        .subject-header h2 {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        .subject-header p {
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        .tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .tier-card {
+            background: var(--secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .tier-card:hover {
+            background: var(--accent);
+        }
+        .tier-card h3 {
+            background: var(--primary);
+            color: #fff;
+            padding: 10px;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .tier-details {
+            max-height: 0;
+            overflow: hidden;
+            background: var(--card-bg);
+            padding: 0 10px;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        .tier-details.open {
+            padding: 10px;
+            max-height: 500px;
+        }
+        .tier-details .price {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .tier-details ul {
+            list-style: disc inside;
+        }
+        .tier-details ul li {
+            margin: 4px 0;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+<h1>Наши Курсы</h1>
+<a href="create.html" class="nav-link">Добавить курс</a>
+<div id="subjects" class="subjects"></div>
+
+<script>
+    async function loadSubjects() {
+        try {
+            const res = await fetch('/api/subjects');
+            if (!res.ok) throw new Error(res.statusText);
+            const subjects = await res.json();
+            const container = document.getElementById('subjects');
+
+            subjects.forEach(sub => {
+                const cardTextMap = {};
+                (sub.cardEntries || []).forEach(entry => {
+                    if (!cardTextMap[entry.tier]) cardTextMap[entry.tier] = [];
+                    cardTextMap[entry.tier].push(entry.textLine);
+                });
+
+                const card = document.createElement('div');
+                card.classList.add('subject-card');
+
+                const header = document.createElement('div');
+                header.classList.add('subject-header');
+                header.innerHTML = `
+            <h2>${sub.name.toUpperCase()}</h2>
+            <p>Старт: ${sub.startText} | Длительность: ${sub.durationText}</p>
+          `;
+                card.appendChild(header);
+
+                const tiers = document.createElement('div');
+                tiers.classList.add('tiers');
+
+                Object.entries(sub.prices).forEach(([tier, price]) => {
+                    const tierCard = document.createElement('div');
+                    tierCard.classList.add('tier-card');
+                    tierCard.innerHTML = `
+              <h3>${tier.charAt(0) + tier.slice(1).toLowerCase()}</h3>
+              <div class="tier-details">
+                <div class="price">
+                  Полная: ${price.full} ₽<br>
+                  Месячная: ${price.monthly} ₽<br>
+                  Рассрочка: ${price.installment} ₽
+                </div>
+                <ul>
+                  ${(cardTextMap[tier] || []).map(line => `<li>${line}</li>`).join('')}
+                </ul>
+              </div>
+            `;
+                    tierCard.addEventListener('click', () => {
+                        tierCard.querySelector('.tier-details').classList.toggle('open');
+                    });
+                    tiers.appendChild(tierCard);
+                });
+
+                card.appendChild(tiers);
+                container.appendChild(card);
+            });
+        } catch (err) {
+            console.error('Ошибка загрузки курсов:', err);
+            document.getElementById('subjects').innerHTML = '<p>Не удалось загрузить данные.</p>';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadSubjects);
+</script>
+</body>
+</html>
