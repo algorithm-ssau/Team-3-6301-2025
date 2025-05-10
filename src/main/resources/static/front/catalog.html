@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/catalog.css" />
+    <title>Каталог</title>
+  </head>
+
+  <body>
+    <div class="catalog-window">
+      <h2 class="catalog-title">Каталог</h2>
+      <div class="catalog-menu">
+        <input type="radio" name="catalog-menu" id="catalog-menu-1" checked />
+        <label
+          for="catalog-menu-1"
+          class="menu-button"
+          onclick="selectSubject('Все курсы')"
+          >Все курсы</label
+        >
+
+        <input type="radio" name="catalog-menu" id="catalog-menu-2" />
+        <label
+          for="catalog-menu-2"
+          class="menu-button"
+          onclick="selectSubject('Русский язык')"
+          >Русский язык</label
+        >
+
+        <input type="radio" name="catalog-menu" id="catalog-menu-3" />
+        <label
+          for="catalog-menu-3"
+          class="menu-button"
+          onclick="selectSubject('Информатика')"
+          >Информатика</label
+        >
+
+        <input type="radio" name="catalog-menu" id="catalog-menu-4" />
+        <label
+          for="catalog-menu-4"
+          class="menu-button"
+          onclick="selectSubject('Химия')"
+          >Химия</label
+        >
+
+        <input type="radio" name="catalog-menu" id="catalog-menu-6" />
+        <label
+          for="catalog-menu-6"
+          class="menu-button"
+          onclick="selectSubject('Биология')"
+          >Биология</label
+        >
+
+        <!--<input type="radio" name="catalog-menu" id="catalog-menu-7">
+            <label for="catalog-menu-7" class="menu-button" onclick="selectSubject('Математика')">Математика</label>-->
+      </div>
+      <div class="catalog-menu-mobile">
+        <div class="selected-option" onclick="toggleDropdown()">
+          <span class="option-text">Все курсы</span
+          ><img
+            class="selected-img"
+            alt=""
+            src="https://insperia.ru/wp-content/uploads/2025/02/Icon.svg"
+          />
+        </div>
+        <div class="options">
+          <div class="option" onclick="selectOption('Все курсы')">
+            Все курсы
+          </div>
+          <div class="option" onclick="selectOption('Русский язык')">
+            Русский язык
+          </div>
+          <div class="option" onclick="selectOption('Информатика')">
+            Информатика
+          </div>
+          <div class="option" onclick="selectOption('Химия')">Химия</div>
+          <div class="option" onclick="selectOption('Биология')">Биология</div>
+          <!--<div class="option" onclick="selectOption('Математика')">Математика</div>-->
+        </div>
+      </div>
+      <script>
+        function toggleDropdown() {
+          const options = document.querySelector(".options");
+          const img = document.querySelector(".selected-img");
+          options.style.display =
+            options.style.display === "block" ? "none" : "block";
+          img.style.transform =
+            options.style.display === "block"
+              ? "rotate(180deg)"
+              : "rotate(0deg)";
+        }
+
+        function selectOption(value) {
+          document.querySelector(".options").style.display = "none";
+          document.querySelector(".selected-img").style.transform =
+            "rotate(0deg)";
+          selectSubject(value);
+        }
+      </script>
+      <div class="catalog-baner">
+        <span
+          >*скидка 50% распространяется на второй, третий и четвертый
+          предмет</span
+        >
+      </div>
+      <div class="basket-recommended">
+        <div class="recommended-card rus">
+          <img class="card-img" alt="" src="img/card/teacher-rus.png" />
+          <div class="card-content">
+            <div class="content-header">
+              <div class="header-crown">
+                <img alt="" src="img/card/card-crown.svg" />
+                <span>Старший эксперт ЕГЭ</span>
+              </div>
+              <div class="content-undertitle desktop">
+                <span class="start-rus">Старт <b>1&nbsp;марта</b></span>
+                <span class="duration-rus"
+                  >Длительность <b>3,5&nbsp;месяца</b></span
+                >
+              </div>
+            </div>
+            <div class="content-title">
+              <a href="#"
+                >Обобщающий курс «Еще чуть-чуть — и соточка!» по русскому
+                языку</a
+              >
+            </div>
+            <div class="content-undertitle mobile">
+              <span class="start-rus">Старт <b>1&nbsp;марта</b></span>
+              <span class="duration-rus"
+                >Длительность <b>3,5&nbsp;месяца</b></span
+              >
+            </div>
+            <div class="content-description">
+              <div class="description-text">
+                <span>8–10 онлайн-занятий в месяц</span>
+                <span
+                  >доступ к домашним заданиями, видеоурокам, полезным карточкам
+                  и конспектам</span
+                >
+                <span>личные ответы на все вопросы по теории и практике</span>
+              </div>
+              <span class="description-price desktop rus">13 770 ₽</span>
+            </div>
+            <hr class="content-spliter" />
+            <div class="content-button">
+              <div class="button-text">
+                <div class="text-tariff">
+                  <span>Тариф</span><span class="tariff-rec-rus">Стандарт</span>
+                </div>
+                <hr class="content-spliter mobile" />
+                <span class="description-price mobile rus">13 770 ₽</span>
+              </div>
+              <button class="button-button rus" onclick="toBasket('rus')">
+                <span>В корзину</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="recommended-card chem">
+          <img class="card-img" alt="" src="img/card/teacher-chem.png" />
+          <div class="card-content">
+            <div class="content-header" style="justify-content: end">
+              <div class="content-undertitle desktop">
+                <span class="start-chem">Старт <b>1&nbsp;марта</b></span>
+                <span class="duration-chem"
+                  >Длительность <b>3,5&nbsp;месяца</b></span
+                >
+              </div>
+            </div>
+            <div class="content-title">
+              <a href="#"
+                >Обобщающий курс «Еще чуть-чуть — и соточка!» по химии</a
+              >
+            </div>
+            <div class="content-undertitle mobile">
+              <span class="start-chem">Старт <b>1&nbsp;марта</b></span>
+              <span class="duration-chem"
+                >Длительность <b>3,5&nbsp;месяца</b></span
+              >
+            </div>
+            <div class="content-description">
+              <div class="description-text">
+                <span>13+ онлайн-занятий в месяц</span>
+                <span
+                  >доступ к домашним заданиям, видеоурокам, полезным карточкам и
+                  конспектам</span
+                >
+                <span>личные ответы на все вопросы по теории и практике</span>
+              </div>
+              <span class="description-price desktop chem">10 745 ₽</span>
+            </div>
+            <hr class="content-spliter" />
+            <div class="content-button">
+              <div class="button-text">
+                <div class="text-tariff">
+                  <span>Тариф</span
+                  ><span class="tariff-rec-chem">Стандарт</span>
+                </div>
+                <hr class="content-spliter mobile" />
+                <span class="description-price mobile chem">10 745 ₽</span>
+              </div>
+              <button class="button-button chem" onclick="toBasket('chem')">
+                <span>В корзину</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="recommended-card bio">
+          <img class="card-img" alt="" src="img/card/teacher-bio.png" />
+          <div class="card-content">
+            <div class="content-header" style="justify-content: end">
+              <div class="content-undertitle desktop">
+                <span class="start-bio">Старт <b>1&nbsp;марта</b></span>
+                <span class="duration-bio"
+                  >Длительность <b>3,5&nbsp;месяца</b></span
+                >
+              </div>
+            </div>
+            <div class="content-title">
+              <a href="#"
+                >Обобщающий курс «Еще чуть-чуть — и соточка!» по биологии</a
+              >
+            </div>
+            <div class="content-undertitle mobile">
+              <span class="start-bio">Старт <b>1&nbsp;марта</b></span>
+              <span class="duration-bio"
+                >Длительность <b>3,5&nbsp;месяца</b></span
+              >
+            </div>
+            <div class="content-description">
+              <div class="description-text">
+                <span>13+ онлайн-занятий в месяц</span>
+                <span
+                  >доступ к домашним заданиям, видеоурокам, полезным карточкам и
+                  конспектам</span
+                >
+                <span>личные ответы на все вопросы по теории и практике</span>
+              </div>
+              <span class="description-price desktop bio">10 745 ₽</span>
+            </div>
+            <hr class="content-spliter" />
+            <div class="content-button">
+              <div class="button-text">
+                <div class="text-tariff">
+                  <span>Тариф</span><span class="tariff-rec-bio">Стандарт</span>
+                </div>
+                <hr class="content-spliter mobile" />
+                <span class="description-price mobile bio">10 745 ₽</span>
+              </div>
+              <button class="button-button bio" onclick="toBasket('bio')">
+                <span>В корзину</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="recommended-card inf">
+          <img class="card-img" alt="" src="img/card/teacher-inf.png" />
+          <div class="card-content">
+            <div class="content-header" style="justify-content: end">
+              <div class="content-undertitle desktop">
+                <span class="start-inf">Старт <b>1&nbsp;марта</b></span>
+                <span class="duration-inf"
+                  >Длительность <b>3,5&nbsp;месяца</b></span
+                >
+              </div>
+            </div>
+            <div class="content-title">
+              <a href="#"
+                >Обобщающий курс «Еще чуть-чуть — и соточка!» по информатике</a
+              >
+            </div>
+            <div class="content-undertitle mobile">
+              <span class="start-inf">Старт <b>1&nbsp;марта</b></span>
+              <span class="duration-inf"
+                >Длительность <b>3,5&nbsp;месяца</b></span
+              >
+            </div>
+            <div class="content-description">
+              <div class="description-text">
+                <span>8–10 онлайн-занятий в месяц</span>
+                <span
+                  >доступ к домашним заданиям и их разборам, полезным карточкам
+                  и конспектам</span
+                >
+                <span>личные ответы на все вопросы по теории и практике</span>
+              </div>
+              <span class="description-price desktop inf">10 745 ₽</span>
+            </div>
+            <hr class="content-spliter" />
+            <div class="content-button">
+              <div class="button-text">
+                <div class="text-tariff">
+                  <span>Тариф</span><span class="tariff-rec-inf">Стандарт</span>
+                </div>
+                <hr class="content-spliter mobile" />
+                <span class="description-price mobile inf">10 745 ₽</span>
+              </div>
+              <button class="button-button inf" onclick="toBasket('inf')">
+                <span>В корзину</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popup-fake popup">
+      <div class="fake-content">
+        <h2 class="fake-content-title">
+          Изменить пакет можно будет после добавления в корзину
+        </h2>
+        <div class="fake-content-button" onclick="hideFakePopup()">ок</div>
+      </div>
+    </div>
+    <div class="popup-basket popup">
+      <div class="basket-content">
+        <img
+          class="popup-basket__cross"
+          alt=""
+          src="https://insperia.ru/wp-content/uploads/2025/02/x-close.svg"
+          onclick="hideBasketPopup()"
+        />
+        <h2 class="popup-basket__title">Курс добавлен в корзину</h2>
+        <span class="popup-basket__description"
+          >Каждый следующий курс со скидкой 50%</span
+        >
+        <div class="popup-basket__buttons">
+          <div class="popup-basket__button" onclick="hideBasketPopup()">
+            Продолжить выбор
+          </div>
+          <a href="/cart" class="popup-basket__button white"
+            >Перейти в корзину</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="popup-tariff">
+      <div class="tariff-content">
+        <div class="tariff-content-header">
+          <span class="header-title"
+            >Выбери тариф<br />для твоего обучения</span
+          >
+          <span class="header-cross">x</span>
+        </div>
+        <div class="tariff-content-cards">
+          <input type="radio" name="tariff" id="tariff-1" checked />
+          <label class="cards-card" for="tariff-1">
+            <span class="card-first">Самый доступный</span>
+            <div class="card-title">
+              <span>Минимум</span>
+              <span>от 2266₽/мес</span>
+            </div>
+            <span class="card-undertitle">Минимум для супер-старта:</span>
+            <button class="card-button" id="card-button-1">Выбрать</button>
+            <div class="card-material">
+              <span class="material-title">Материалы:</span>
+              <span class="material-content"
+                >8−10 онлайн-вебинаров<br />в месяц (+ записи)</span
+              >
+              <span class="material-content">4-5 видеоуроков в месяц</span>
+              <span class="material-content"
+                >карточки с алгоритмами<br />и конспекты к каждой теме</span
+              >
+            </div>
+            <div class="card-material">
+              <span class="material-title">Практика:</span>
+              <span class="material-content"
+                >тесты (теория + практика + сочинение) каждую неделю</span
+              >
+              <span class="material-content"
+                >пробники 2 раза в месяц<br />(без проверки сочинения)</span
+              >
+            </div>
+            <div class="card-material">
+              <span class="material-title">Поддержка:</span>
+              <span class="material-content"
+                >еженедельные вебинары по психологии и профориентации от
+                приглашенных спикеров</span
+              >
+              <span class="material-content"
+                >индивидуальные ответы на вопросы по теории в закрытой
+                группе</span
+              >
+              <span class="material-content"
+                >2 беседы в Телеграме (теория + флудилка)</span
+              >
+            </div>
+          </label>
+          <input type="radio" name="tariff" id="tariff-2" />
+          <label class="cards-card" for="tariff-2">
+            <span class="card-first">Выбор учеников</span>
+            <div class="card-title">
+              <span>Стандарт</span>
+              <span>от 3116₽/мес</span>
+            </div>
+            <span class="card-undertitle"
+              >Всё, что в тарифе Минимум и ещё:</span
+            >
+            <button class="card-button" id="card-button-2">Выбрать</button>
+            <span class="tariff-card-content standart"
+              >2 сочинения в месяц с индивидуальной подробной проверкой от наших
+              суперстрогих проверяющих</span
+            >
+            <span class="tariff-card-content standart"
+              ><span
+                >пробники 2 раза в месяц<br /><i
+                  >(с проверкой сочинения)</i
+                ></span
+              ></span
+            >
+            <span class="tariff-card-content standart"
+              >помощь мотиватора (следит за прогрессом, помогает не потеряться
+              на курсе и поддерживает ученика)</span
+            >
+            <span class="tariff-card-content standart"
+              >3 беседы в Телеграме (теория + флудилка + беседа с
+              мотиватором)</span
+            >
+          </label>
+          <input type="radio" name="tariff" id="tariff-3" />
+          <label class="cards-card" for="tariff-3">
+            <img
+              alt=""
+              src="https://insperia.ru/wp-content/uploads/2025/02/crown-black.svg"
+              class="card-crown"
+            />
+            <div class="card-title">
+              <span>Премиум</span>
+              <span>от 3760₽/мес</span>
+            </div>
+            <span class="card-undertitle"
+              >Всё, что в тарифе Стандарт и ещё:</span
+            >
+            <button class="card-button" id="card-button-3">Выбрать</button>
+            <span class="tariff-card-content premium"
+              >групповые занятия с наставником раз в неделю</span
+            >
+            <span class="tariff-card-content premium"
+              ><span
+                >помощь наставника<br /><i
+                  >(дипломированный филолог или студент гуманитарного
+                  направления, который не только мотивирует и поддерживает
+                  ученика, но и отлично разбирается в предмете)</i
+                ></span
+              ></span
+            >
+            <span class="tariff-card-content premium"
+              >4-5 сочинений в месяц с индивидуальной подробной проверкой от
+              наших суперстрогих проверяющих</span
+            >
+            <span class="tariff-card-content premium"
+              ><span
+                >3 беседы в Телеграме<br />(теория + флудилка +
+                <b>беседа с наставником</b>)</span
+              ></span
+            >
+          </label>
+        </div>
+      </div>
+    </div>
+    <style>
+      .basket-fixed {
+        position: fixed;
+        right: 50px;
+        bottom: 50px;
+        margin: 0;
+        width: 65px;
+        height: 65px;
+        border: 3px solid var(--color-insperia-green);
+        border-radius: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        background-color: #fff;
+      }
+
+      .basket-fixed img {
+        position: relative;
+        top: 2px;
+        right: 2px;
+        max-width: 24px;
+        max-height: 24px;
+      }
+
+      .basket-fixed span {
+        position: absolute;
+        text-decoration: none;
+        background-color: #ff5c00;
+        color: #fff;
+        padding: 2px;
+        border-radius: 50%;
+        width: 12px;
+        height: 12px;
+        font-family: Stolzl;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 16px;
+        right: 16px;
+        max-width: 24px;
+        max-height: 24px;
+      }
+
+      .basket-fixed:hover {
+        opacity: 0.8;
+      }
+
+      @media (max-width: 700px) {
+        .basket-fixed {
+          right: 10px;
+          bottom: 60px;
+        }
+      }
+    </style>
+    <a href="" class="basket-fixed">
+      <img
+        alt="/cart"
+        src="https://insperia.ru/wp-content/uploads/2025/03/Group-9.svg"
+      />
+      <span id="basket-fixed-counter">0</span>
+    </a>
+    <script src="js/loadHeader.js"></script>
+    <script src="js/Subjects.js"></script>
+    <script src="js/Swipe.js"></script>
+    <script src="js/catalog/RecommendCard.js"></script>
+    <script src="js/catalog/Popup.js"></script>
+    <script src="js/catalog/Main.js"></script>
+  </body>
+</html>

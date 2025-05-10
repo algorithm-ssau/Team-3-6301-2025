@@ -1,0 +1,52 @@
+:root {
+    --color-insperia-green: #65EBBB;
+    --color-insperia-orange: #FF5C00;
+    --color-insperia-purple: #6C04FF;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Stolzl', 'Raleway', sans-serif;
+    margin: 0;
+    padding: 50px 0;
+    height: fit-content;
+    background-color: #1C1C1C;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-direction: column;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    height: 80px;
+    box-sizing: border-box;
+    padding: 0 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    z-index: 999; 
+}
+header nav{
+    display: flex;
+    gap: 30px;
+    font-size: 24px;
+   
+}
+header nav a{
+ text-decoration: none;
+ color: #fff;
+}
+header nav a:hover{
+ text-decoration: underline;
+}

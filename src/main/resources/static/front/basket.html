@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/basket.css" />
+    <title>Корзина</title>
+  </head>
+
+  <body>
+    <div class="basket-window">
+      <h2 class="basket-title">Корзина</h2>
+      <div class="basket-content">
+        <div class="content-cards">
+          <div class="cards-picked">
+            <div id="basket-card-rus" class="picked-card">
+              <a class="card-img" href="/rus"
+                ><img
+                  alt="Фото преподавателя"
+                  src="https://insperia.ru/wp-content/uploads/2025/02/banner-rus.png"
+              /></a>
+              <div class="card-content">
+                <div class="content-header">
+                  <div class="header-crown">
+                    <img
+                      alt="Crown"
+                      src="https://insperia.ru/wp-content/uploads/2025/02/card-crown.svg"
+                    />
+                    <span>Старший эксперт ЕГЭ</span>
+                  </div>
+                  <img
+                    class="header-trash"
+                    alt=""
+                    src="https://insperia.ru/wp-content/uploads/2025/02/trash.svg"
+                  />
+                </div>
+                <div class="content-title">
+                  <a href="https://insperia.ru/rus"
+                    >Спринт «УЛЬТРА» по&nbsp;русскому языку</a
+                  >
+                </div>
+                <div class="content-undertitle">
+                  <span class="start">Старт <b>1&nbsp;марта</b></span>
+                  <span class="duration"
+                    >Длительность <b>3,5&nbsp;месяца</b></span
+                  >
+                </div>
+                <div class="content-description">
+                  <div class="description-text">
+                    <span>8–10 онлайн-занятий в месяц</span>
+                    <span
+                      >доступ к домашним заданиями, видеоурокам, полезным
+                      карточкам и конспектам</span
+                    >
+                    <span
+                      >личные ответы на все вопросы по теории и практике
+                    </span>
+                  </div>
+                </div>
+                <hr class="content-spliter" />
+                <div class="content-button">
+                  <div class="button-text">
+                    <div class="text-tariff">
+                      <span>Тариф</span
+                      ><span class="button-showpopup">Стандарт</span>
+                    </div>
+                  </div>
+                  <hr class="content-spliter mobile" />
+                  <span class="description-price">12 567 ₽</span>
+                </div>
+                <a href="#content-form" class="content-buy">Перейти к оплате</a>
+              </div>
+              <img
+                class="cross-delete"
+                alt=""
+                src="https://insperia.ru/wp-content/uploads/2025/02/x-close-1-1.svg"
+              />
+            </div>
+            <div id="basket-card-chem" class="picked-card">
+              <a class="card-img" href="/chem"
+                ><img
+                  alt="Фото преподавателя"
+                  src="https://insperia.ru/wp-content/uploads/2025/02/бэйджик-химия-Дима-1024x1024.png"
+              /></a>
+              <div class="card-content">
+                <div class="content-header trash">
+                  <img
+                    class="header-trash"
+                    alt=""
+                    src="https://insperia.ru/wp-content/uploads/2025/02/trash.svg"
+                  />
+                </div>
+                <div class="content-title">
+                  <a href="https://insperia.ru/chem"
+                    >Спринт «УЛЬТРА» по&nbsp;химии</a
+                  >
+                </div>
+                <div class="content-undertitle">
+                  <span class="start">Старт <b>1&nbsp;марта</b></span>
+                  <span class="duration"
+                    >Длительность <b>3,5&nbsp;месяца</b></span
+                  >
+                </div>
+                <div class="content-description">
+                  <div class="description-text">
+                    <span>13+ онлайн-занятий в месяц</span>
+                    <span
+                      >доступ к домашним заданиям, видеоурокам, полезным
+                      карточкам и конспектам</span
+                    >
+                    <span
+                      >личные ответы на все вопросы по теории и практике</span
+                    >
+                  </div>
+                </div>
+                <hr class="content-spliter" />
+                <div class="content-button">
+                  <div class="button-text">
+                    <div class="text-tariff">
+                      <span>Тариф</span
+                      ><span class="button-showpopup">Стандарт</span>
+                    </div>
+                  </div>
+                  <hr class="content-spliter mobile" />
+                  <span class="description-price" id="price-chem"
+                    >12 567 ₽</span
+                  >
+                </div>
+                <a href="#content-form" class="content-buy">Перейти к оплате</a>
+              </div>
+              <img
+                class="cross-delete"
+                alt=""
+                src="https://insperia.ru/wp-content/uploads/2025/02/x-close-1-1.svg"
+              />
+            </div>
+            <div id="basket-card-bio" class="picked-card">
+              <a class="card-img" href="/biology"
+                ><img
+                  alt="Фото преподавателя"
+                  src="https://insperia.ru/wp-content/uploads/2025/03/IMG_3630-1024x1024.png"
+              /></a>
+              <div class="card-content">
+                <div class="content-header trash">
+                  <img
+                    class="header-trash"
+                    alt=""
+                    src="https://insperia.ru/wp-content/uploads/2025/02/trash.svg"
+                  />
+                </div>
+                <div class="content-title">
+                  <a href="https://insperia.ru/chem"
+                    >Обобщающий курс «Еще чуть-чуть — и соточка!»
+                    по&nbsp;биологии</a
+                  >
+                </div>
+                <div class="content-undertitle">
+                  <span class="start">Старт <b>1&nbsp;марта</b></span>
+                  <span class="duration"
+                    >Длительность <b>3,5&nbsp;месяца</b></span
+                  >
+                </div>
+                <div class="content-description">
+                  <div class="description-text">
+                    <span>13+ онлайн-занятий в месяц</span>
+                    <span
+                      >доступ к домашним заданиям, видеоурокам, полезным
+                      карточкам и конспектам</span
+                    >
+                    <span
+                      >личные ответы на все вопросы по теории и практике</span
+                    >
+                  </div>
+                </div>
+                <hr class="content-spliter" />
+                <div class="content-button">
+                  <div class="button-text">
+                    <div class="text-tariff">
+                      <span>Тариф</span
+                      ><span class="button-showpopup">Стандарт</span>
+                    </div>
+                  </div>
+                  <hr class="content-spliter mobile" />
+                  <span class="description-price">12 567 ₽</span>
+                </div>
+                <a href="#content-form" class="content-buy">Перейти к оплате</a>
+              </div>
+              <img
+                class="cross-delete"
+                alt=""
+                src="https://insperia.ru/wp-content/uploads/2025/02/x-close-1-1.svg"
+              />
+            </div>
+            <div id="basket-card-inf" class="picked-card">
+              <a class="card-img" href="/info"
+                ><img
+                  alt="Фото преподавателя"
+                  src="https://insperia.ru/wp-content/uploads/2025/02/бэйджик-лето_Наталия-1024x1024.png"
+              /></a>
+              <div class="card-content">
+                <div class="content-header trash">
+                  <img
+                    class="header-trash"
+                    alt=""
+                    src="https://insperia.ru/wp-content/uploads/2025/02/trash.svg"
+                  />
+                </div>
+                <div class="content-title">
+                  <a href="https://insperia.ru/info"
+                    >Обобщающий курс «Еще чуть-чуть — и соточка!»
+                    по&nbsp;информатике</a
+                  >
+                </div>
+                <div class="content-undertitle">
+                  <span class="start">Старт <b>1&nbsp;марта</b></span>
+                  <span class="duration"
+                    >Длительность <b>3,5&nbsp;месяца</b></span
+                  >
+                </div>
+                <div class="content-description">
+                  <div class="description-text">
+                    <span>8–10 онлайн-занятий в месяц</span>
+                    <span
+                      >доступ к домашним заданиям и их разборам, полезным
+                      карточкам и конспектам</span
+                    >
+                    <span
+                      >личные ответы на все вопросы по теории и практике</span
+                    >
+                  </div>
+                </div>
+                <hr class="content-spliter" />
+                <div class="content-button">
+                  <div class="button-text">
+                    <div class="text-tariff">
+                      <span>Тариф</span
+                      ><span class="button-showpopup">Стандарт</span>
+                    </div>
+                  </div>
+                  <hr class="content-spliter mobile" />
+                  <span class="description-price">12 567 ₽</span>
+                </div>
+                <a href="#content-form" class="content-buy">Перейти к оплате</a>
+              </div>
+              <img
+                class="cross-delete"
+                alt=""
+                src="https://insperia.ru/wp-content/uploads/2025/02/x-close-1-1.svg"
+              />
+            </div>
+            <!-- <div class="picked-card math">
+                        <img class="card-img" alt=""
+                            src="https://insperia.ru/wp-content/uploads/2025/02/бэйджик-профиматика-1024x1024.png">
+                        <div class="card-content">
+                            <div class="content-header trash">
+                                <img class="header-trash" alt=""
+                                    src="https://insperia.ru/wp-content/uploads/2025/02/trash.svg"
+                                    onclick="removeFromBasket(2)">
+                            </div>
+                            <div class="content-title"><a href="https://insperia.ru/math">Обобщающий курс «Еще чуть-чуть
+                                    — и соточка!» по&nbsp;математике</a></div>
+                            <div class="content-undertitle">
+                                <span class="start-math">Старт <b>1&nbsp;марта</b></span>
+                                <span class="duration-math">Длительность <b>3,5&nbsp;месяца</b></span>
+                            </div>
+                            <div class="content-description">
+                                <div class="description-text">
+                                    <span>8–10 онлайн-занятий в месяц</span>
+                                    <span>доступ к домашним заданиями, видеоурокам, полезным карточкам и
+                                        конспектам</span>
+                                    <span>личные ответы на все вопросы по теории и практике</span>
+                                </div>
+                            </div>
+                            <hr class="content-spliter">
+                            <div class="content-button">
+                                <div class="button-text"><span>Тариф</span><span class="button-showpopup"
+                                        id="showpopup-math">Стандарт</span></div>
+                                <hr class="content-spliter mobile">
+                                <span class="description-price" id="price-math">12 567 ₽</span>
+                            </div>
+                            <a href="#content-form" class="content-buy">Перейти к оплате</a>
+                        </div>
+                        <img class="cross-delete" alt=""
+                            src="https://insperia.ru/wp-content/uploads/2025/02/x-close-1.svg"
+                            onclick="removeFromBasket(2)">
+
+                    </div> -->
+            <a href="#recommended-title">
+              <div class="picked-add">
+                <span>+</span>
+                <span class="add-text"
+                  >Твоя корзина пуста<br /><br />Добавь два или более
+                  предметов<br /><i>со скидкой до 50%</i></span
+                >
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="content-form" id="content-form">
+          <div class="form-eco">
+            <span class="eco-value">1000 ₽</span><span>экономия</span>
+          </div>
+          <div class="form-price">
+            <span id="priceWithDiscount">22 567 ₽</span
+            ><span id="priceWithOutDiscount">32 567 ₽</span>
+          </div>
+          <div class="form-underprice">
+            <span>В рассрочку</span
+            ><span id="installments"> от 2 400 ₽/ мес</span>
+          </div>
+          <label onclick="changePriceType('В рассрочку')">
+            <input type="radio" name="content-form" />
+            <span>В рассрочку</span>
+            <span id="difference"></span>
+          </label>
+          <label onclick="changePriceType('Помесячно')">
+            <input type="radio" name="content-form" checked />
+            <span>Помесячно</span>
+          </label>
+          <label onclick="changePriceType('Полная оплата')">
+            <input type="radio" name="content-form" />
+            <span>Полная оплата</span>
+            <span id="difference2"></span>
+          </label>
+          <button class="form-button" onclick="showPopup('popup-phone')">
+            Перейти к оформлению
+          </button>
+          <div class="form-promo">
+            <input
+              type="text"
+              class="promo-input"
+              id="promo-input"
+              placeholder="Промокод"
+            />
+            <button class="promo-button" id="promo-button">Применить</button>
+          </div>
+          <span class="form-underpromo"
+            >*Промокод можно использовать только один раз</span
+          >
+        </div>
+      </div>
+      <div class="basket-recommended">
+        <div class="recommended-title" id="recommended-title">
+          <div class="title-text">
+            <span>Рекомендуемые курсы</span>
+          </div>
+          <a href="/catalog" class="title-allcourses">Все курсы</a>
+        </div>
+        <div id="recommended-card-rus" class="recommended-card">
+          <img
+            class="card-img"
+            alt=""
+            src="https://insperia.ru/wp-content/uploads/2025/02/banner-rus.png"
+            href="/rus"
+          />
+          <div class="card-content">
+            <div class="content-header">
+              <div class="header-crown">
+                <img
+                  alt=""
+                  src="https://insperia.ru/wp-content/uploads/2025/02/card-crown.svg"
+                />
+                <span>Старший эксперт ЕГЭ</span>
+              </div>
+              <div class="content-undertitle desktop">
+                <span class="start">Старт <b>1&nbsp;марта</b></span>
+                <span class="duration"
+                  >Длительность <b>3,5&nbsp;месяца</b></span
+                >
+              </div>
+            </div>
+            <div class="content-title">
+              <a href="https://insperia.ru/rus"
+                >Спринт «УЛЬТРА» по русскому языку</a
+              >
+            </div>
+            <div class="content-undertitle mobile">
+              <span class="start">Старт <b>1&nbsp;марта</b></span>
+              <span class="duration">Длительность <b>3,5&nbsp;месяца</b></span>
+            </div>
+            <div class="content-description">
+              <div class="description-text">
+                <span>8–10 онлайн-занятий в месяц</span>
+                <span
+                  >доступ к домашним заданиями, видеоурокам, полезным карточкам
+                  и конспектам</span
+                >
+                <span>личные ответы на все вопросы по теории и практике</span>
+              </div>
+              <span class="description-price desktop rus">13 770 ₽</span>
+            </div>
+            <hr class="content-spliter" />
+            <div class="content-button">
+              <div class="button-text">
+                <div class="text-tariff">
+                  <span>Тариф</span
+                  ><span class="button-showpopup">Стандарт</span>
+                </div>
+                <hr class="content-spliter mobile" />
+                <span class="description-price mobile rus">13 770 ₽</span>
+              </div>
+              <button class="button-button"><span>В корзину</span></button>
+            </div>
+          </div>
+        </div>
+        <div id="recommended-card-chem" class="recommended-card">
+          <img
+            class="card-img"
+            alt=""
+            src="https://insperia.ru/wp-content/uploads/2025/02/бэйджик-химия-Дима-1024x1024.png"
+            onclick="redirectImg('chem')"
+          />
+          <div class="card-content">
+            <div class="content-header" style="justify-content: end">
+              <div class="content-undertitle desktop">
+                <span class="start">Старт <b>1&nbsp;марта</b></span>
+                <span class="duration"
+                  >Длительность <b>3,5&nbsp;месяца</b></span
+                >
+              </div>
+            </div>
+            <div class="content-title">
+              <a href="https://insperia.ru/chem"
+                >Спринт «УЛЬТРА» по&nbsp;химии</a
+              >
+            </div>
+            <div class="content-undertitle mobile">
+              <span class="start">Старт <b>1&nbsp;марта</b></span>
+              <span class="duration">Длительность <b>3,5&nbsp;месяца</b></span>
+            </div>
+            <div class="content-description">
+              <div class="description-text">
+                <span>13+ онлайн-занятий в месяц</span>
+                <span
+                  >доступ к домашним заданиям, видеоурокам, полезным карточкам и
+                  конспектам</span
+                >
+                <span>личные ответы на все вопросы по теории и практике</span>
+              </div>
+              <span class="description-price desktop chem">10 745 ₽</span>
+            </div>
+            <hr class="content-spliter" />
+            <div class="content-button">
+              <div class="button-text">
+                <div class="text-tariff">
+                  <span>Тариф</span
+                  ><span class="button-showpopup">Стандарт</span>
+                </div>
+                <hr class="content-spliter mobile" />
+                <span class="description-price mobile chem">10 745 ₽</span>
+              </div>
+              <button class="button-button"><span>В корзину</span></button>
+            </div>
+          </div>
+        </div>
+        <div id="recommended-card-bio" class="recommended-card">
+          <img
+            class="card-img"
+            alt=""
+            src="https://insperia.ru/wp-content/uploads/2025/03/IMG_3630-1024x1024.png"
+            onclick="redirectImg('biology')"
+          />
+          <div class="card-content">
+            <div class="content-header" style="justify-content: end">
+              <div class="content-undertitle desktop">
+                <span class="start">Старт <b>1&nbsp;марта</b></span>
+                <span class="duration"
+                  >Длительность <b>3,5&nbsp;месяца</b></span
+                >
+              </div>
+            </div>
+            <div class="content-title">
+              <a href="https://insperia.ru/biology"
+                >Обобщающий курс «Еще чуть-чуть — и соточка!» по биологии</a
+              >
+            </div>
+            <div class="content-undertitle mobile">
+              <span class="start">Старт <b>1&nbsp;марта</b></span>
+              <span class="duration">Длительность <b>3,5&nbsp;месяца</b></span>
+            </div>
+            <div class="content-description">
+              <div class="description-text">
+                <span>13+ онлайн-занятий в месяц</span>
+                <span
+                  >доступ к домашним заданиям, видеоурокам, полезным карточкам и
+                  конспектам</span
+                >
+                <span>личные ответы на все вопросы по теории и практике</span>
+              </div>
+              <span class="description-price desktop bio">10 745 ₽</span>
+            </div>
+            <hr class="content-spliter" />
+            <div class="content-button">
+              <div class="button-text">
+                <div class="text-tariff">
+                  <span>Тариф</span
+                  ><span class="button-showpopup">Стандарт</span>
+                </div>
+                <hr class="content-spliter mobile" />
+                <span class="description-price mobile bio">10 745 ₽</span>
+              </div>
+              <button class="button-button"><span>В корзину</span></button>
+            </div>
+          </div>
+        </div>
+        <div id="recommended-card-inf" class="recommended-card">
+          <img
+            class="card-img"
+            alt=""
+            src="https://insperia.ru/wp-content/uploads/2025/02/бэйджик-лето_Наталия-1024x1024.png"
+          />
+          <div class="card-content">
+            <div class="content-header" style="justify-content: end">
+              <div class="content-undertitle desktop">
+                <span class="start">Старт <b>1&nbsp;марта</b></span>
+                <span class="duration"
+                  >Длительность <b>3,5&nbsp;месяца</b></span
+                >
+              </div>
+            </div>
+            <div class="content-title">
+              <a href="https://insperia.ru/info"
+                >Обобщающий курс «Еще чуть-чуть — и соточка!» по информатике</a
+              >
+            </div>
+            <div class="content-undertitle mobile">
+              <span class="start">Старт <b>1&nbsp;марта</b></span>
+              <span class="duration">Длительность <b>3,5&nbsp;месяца</b></span>
+            </div>
+            <div class="content-description">
+              <div class="description-text">
+                <span>8–10 онлайн-занятий в месяц</span>
+                <span
+                  >доступ к домашним заданиям и их разборам, полезным карточкам
+                  и конспектам</span
+                >
+                <span>личные ответы на все вопросы по теории и практике</span>
+              </div>
+              <span class="description-price desktop inf">10 745 ₽</span>
+            </div>
+            <hr class="content-spliter" />
+            <div class="content-button">
+              <div class="button-text">
+                <div class="text-tariff">
+                  <span>Тариф</span
+                  ><span class="button-showpopup">Стандарт</span>
+                </div>
+                <hr class="content-spliter mobile" />
+                <span class="description-price mobile inf">10 745 ₽</span>
+              </div>
+              <button class="button-button"><span>В корзину</span></button>
+            </div>
+          </div>
+        </div>
+        <a href="/catalog" class="recommended-all"><span>Все курсы</span></a>
+      </div>
+    </div>
+    <div id="popup-tariff" class="popup popup-tariff">
+      <div class="tariff-content">
+        <div class="tariff-content-header">
+          <span class="header-title">Выбери тариф</span>
+          <span class="header-cross">x</span>
+        </div>
+        <div class="tariff-content-cards">
+          <input type="radio" name="tariff" id="tariff-1" checked />
+          <label class="cards-card" id="cards-card-1">
+            <span class="card-first">Самый доступный</span>
+            <div class="card-title">
+              <span>Минимум</span>
+              <span>от 2 266₽/мес</span>
+            </div>
+            <span class="card-undertitle">Минимум для супер-старта:</span>
+            <button class="card-button" id="card-button-1">Выбрать</button>
+            <div class="card-material">
+              <span class="material-title">Материалы:</span>
+              <span class="material-content"
+                >8−10 онлайн-вебинаров<br />в месяц (+ записи)</span
+              >
+              <span class="material-content">4-5 видеоуроков в месяц</span>
+              <span class="material-content"
+                >карточки с алгоритмами<br />и конспекты к каждой теме</span
+              >
+            </div>
+            <div class="card-material">
+              <span class="material-title">Практика:</span>
+              <span class="material-content"
+                >тесты (теория + практика + сочинение) каждую неделю</span
+              >
+              <span class="material-content"
+                >пробники 2 раза в месяц<br />(без проверки сочинения)</span
+              >
+            </div>
+            <div class="card-material">
+              <span class="material-title">Поддержка:</span>
+              <span class="material-content"
+                >еженедельные вебинары по психологии и профориентации от
+                приглашенных спикеров</span
+              >
+              <span class="material-content"
+                >индивидуальные ответы на вопросы по теории в закрытой
+                группе</span
+              >
+              <span class="material-content"
+                >2 беседы в Телеграме (теория + флудилка)</span
+              >
+            </div>
+          </label>
+          <input type="radio" name="tariff" id="tariff-2" />
+          <label class="cards-card" id="cards-card-2">
+            <span class="card-first">Выбор учеников</span>
+            <div class="card-title">
+              <span>Стандарт</span>
+              <span>от 3 116₽/мес</span>
+            </div>
+            <span class="card-undertitle"
+              >Всё, что в тарифе Минимум и ещё:</span
+            >
+            <button class="card-button" id="card-button-2">Выбрать</button>
+            <span class="tariff-card-content standart"
+              >2 сочинения в месяц с индивидуальной подробной проверкой от наших
+              суперстрогих проверяющих</span
+            >
+            <span class="tariff-card-content standart"
+              ><span
+                >пробники 2 раза в месяц<br /><i
+                  >(с проверкой сочинения)</i
+                ></span
+              ></span
+            >
+            <span class="tariff-card-content standart"
+              >помощь мотиватора (следит за прогрессом, помогает не потеряться
+              на курсе и поддерживает ученика)</span
+            >
+            <span class="tariff-card-content standart"
+              >3 беседы в Телеграме (теория + флудилка + беседа с
+              мотиватором)</span
+            >
+          </label>
+          <input type="radio" name="tariff" id="tariff-3" />
+          <label class="cards-card" id="cards-card-3">
+            <img
+              alt=""
+              src="https://insperia.ru/wp-content/uploads/2025/02/crown-black.svg"
+              class="card-crown"
+            />
+            <div class="card-title">
+              <span>Премиум</span>
+              <span>от 3 760₽/мес</span>
+            </div>
+            <span class="card-undertitle"
+              >Всё, что в тарифе Стандарт и ещё:</span
+            >
+            <button class="card-button" id="card-button-3">Выбрать</button>
+            <span class="tariff-card-content premium"
+              >групповые занятия с наставником раз в неделю</span
+            >
+            <span class="tariff-card-content premium"
+              ><span
+                >помощь наставника<br /><i
+                  >(дипломированный филолог или студент гуманитарного
+                  направления, который не только мотивирует и поддерживает
+                  ученика, но и отлично разбирается в предмете)</i
+                ></span
+              ></span
+            >
+            <span class="tariff-card-content premium"
+              >4-5 сочинений в месяц с индивидуальной подробной проверкой от
+              наших суперстрогих проверяющих</span
+            >
+            <span class="tariff-card-content premium"
+              ><span
+                >3 беседы в Телеграме<br />(теория + флудилка +
+                <b>беседа с наставником</b>)</span
+              ></span
+            >
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup-phone">
+      <div class="phone-form">
+        <div class="form-animation">
+          <img
+            id="animation-load"
+            src="https://insperia.ru/wp-content/uploads/2025/03/load.png"
+          />
+          <span>Создание ссылки для оплаты</span>
+        </div>
+        <div class="form-title">
+          <h2>Оформление заказа</h2>
+          <span id="close-popup">x</span>
+        </div>
+        <div class="form-input">
+          <span>Имя</span>
+          <input type="text" placeholder="Ваня" id="form-name" required />
+        </div>
+        <div class="form-input">
+          <span>Телефон</span>
+          <div class="telefon-form">
+            <input
+              type="tel"
+              placeholder="+7 (999) 999-99-99"
+              id="phone-input"
+              required
+            />
+            <span id="send-code">Отправить код</span>
+          </div>
+        </div>
+        <span id="confirm-error"></span>
+        <div class="form-confirm">
+          <input
+            type="number"
+            placeholder="Код подтверждения"
+            id="confirm-input"
+          />
+          <label
+            ><input type="checkbox" /><span
+              >Подтверждаю, что ознакомлен с
+              <a
+                href="https://procraft.s3.eu-central-1.amazonaws.com/f849d769-3c25-4814-8069-b8bb53505aef/Politika_obrabotki_personal_nykh_dannykh_Soldaeva.pdf"
+                >«Политикой обработки персональных данных»</a
+              >
+              и даю согласие на обработку персональных данных.</span
+            ></label
+          >
+        </div>
+        <button class="confirm-button deactivated" id="confirm-submit">
+          Оформить заказ
+          <span class="tooltip">Подтвердите номер телефона</span>
+        </button>
+      </div>
+    </div>
+    <div class="popup popup-fake">
+      <div class="fake-content">
+        <h2 class="fake-content-title">
+          Изменить пакет можно будет после добавления в корзину
+        </h2>
+        <div class="fake-content-button" onclick="hideFakePopup()">ок</div>
+      </div>
+    </div>
+    <div class="popup popup-alert">
+      <div class="alert-content">
+        <span class="alert-close" onclick="hidePopup('popup-alert')">x</span>
+        <div class="alert-content-title"><span>Уточнение</span></div>
+        <div>
+          <span id="alert-text"
+            >Информатика может быть добавлена только в пустую корзину или в
+            комплекте с русским языком</span
+          >
+        </div>
+        <span class="alert-okey" onclick="hidePopup('popup-alert')"
+          >Понятно</span
+        >
+      </div>
+    </div>
+    <script src="js/loadHeader.js"></script>
+    <script src="js/Subjects.js"></script>
+    <script src="js/Swipe.js"></script>
+    <script src="js/basket/RecommendCard.js"></script>
+    <script src="js/basket/ProductCard.js"></script>
+    <script src="js/basket/Popup.js"></script>
+    <script src="js/basket/Main.js"></script>
+    <script src="js/basket/Submit.js"></script>
+  </body>
+</html>
