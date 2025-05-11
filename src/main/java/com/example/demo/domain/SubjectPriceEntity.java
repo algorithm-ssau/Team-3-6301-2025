@@ -1,12 +1,14 @@
 package com.example.demo.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 
 @Entity
 @Table(name = "subject_price")
 @Data
+@AllArgsConstructor
+@Builder
 @NoArgsConstructor
 public class SubjectPriceEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
