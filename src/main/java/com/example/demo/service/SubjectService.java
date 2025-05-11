@@ -35,7 +35,7 @@ public class SubjectService {
 
     @Transactional
     public SubjectDto create(SubjectDto dto) {
-        // 1) Сохраняем сам Subject (без cardText и durationNumber, но с title)
+        // 1) Сохраняем Subject
         SubjectEntity subject = SubjectEntity.builder()
                 .name(dto.getName())
                 .title(dto.getTitle())
@@ -44,18 +44,23 @@ public class SubjectService {
                 .build();
         subject = subjectRepo.save(subject);
 
-        // 2) Вставляем цены
+        // 2) Вставляем цены (типы будут автосозданы, если их нет)
         insertPrices(subject, "full", dto.getPriceFull());
         insertPrices(subject, "monthly", dto.getPriceMonthly());
         insertPrices(subject, "installment", dto.getPriceInstallment());
 
-        // 3) Конвертируем обратно в DTO
+        // 3) Возвращаем DTO
         return toDto(subject);
     }
 
     private void insertPrices(SubjectEntity subject, String typeName, List<Integer> amounts) {
         PriceTypeEntity type = priceTypeRepo.findByName(typeName)
-                .orElseThrow(() -> new IllegalStateException("Не найден PriceType: " + typeName));
+                .orElseGet(() -> {
+                    // создаём новый PriceType, если не нашли
+                    PriceTypeEntity p = new PriceTypeEntity();
+                    p.setName(typeName);
+                    return priceTypeRepo.save(p);
+                });
 
         for (int i = 0; i < amounts.size(); i++) {
             SubjectPriceEntity price = SubjectPriceEntity.builder()
@@ -67,6 +72,7 @@ public class SubjectService {
             priceRepo.save(price);
         }
     }
+
 
     private SubjectDto toDto(SubjectEntity subj) {
         List<SubjectPriceEntity> prices = priceRepo.findBySubjectIdOrderByPriceTypeIdAscTierAsc(subj.getId());
