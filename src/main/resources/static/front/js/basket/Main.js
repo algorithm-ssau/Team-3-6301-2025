@@ -2,6 +2,19 @@ import { subjects } from "../Subjects.js";
 import { RecommendCard } from "./RecommendCard.js";
 import { ProductCard } from "./ProductCard.js";
 
+let procuctList = [];
+let recommendedList = [];
+let subjectsName = [];
+subjects.forEach((subject) => {
+  subjectsName.push(subject.name);
+});
+
+let priceType = "Помесячно";
+let maxTariffInBasket;
+let productsInBasket = 0;
+let price = 0;
+let priceWithDiscount = 0;
+
 function loadCardTemplate(name) {
   const tmpl = document.getElementById(name);
   if (!tmpl) {
@@ -49,6 +62,9 @@ subjects.forEach(async (subject) => {
 
   // 4) вставляем в контейнер
   document.querySelector(".content-cards").appendChild(clone);
+  procuctList.push(
+    new ProductCard(subject, removeBasket, findMaxTariffInBasket)
+  );
 });
 
 templateContent = await loadCardTemplate("recommendCard-template");
@@ -90,33 +106,10 @@ subjects.forEach(async (subject) => {
 
   // 4) вставляем в контейнер
   document.querySelector(".basket-recommended").appendChild(clone);
+  recommendedList.push(new RecommendCard(subject, toBasket));
 });
 
 const contentForm = document.querySelector("#content-form");
-
-let subjectsName = [];
-subjects.forEach((subject) => {
-  subjectsName.push(subject.name);
-});
-let procuctList = [];
-let recommendedList = [];
-let priceType = "Помесячно";
-let maxTariffInBasket;
-let productsInBasket = 0;
-let price = 0;
-let priceWithDiscount = 0;
-
-subjectsName.forEach(function (name) {
-  const subjectData = subjects.find((subject) => subject.name === name);
-  if (subjectData) {
-    procuctList.push(
-      new ProductCard(subjectData, removeBasket, findMaxTariffInBasket)
-    );
-    recommendedList.push(new RecommendCard(subjectData, toBasket));
-  } else {
-    console.warn(`Предмет ${name} не найден в массиве subjects.`);
-  }
-});
 
 function readLocalStorage() {
   recommendedList.forEach(function (card) {
@@ -420,12 +413,4 @@ function updateForm() {
   document.querySelector(
     "#difference2"
   ).innerHTML = `- ${difference.toLocaleString("ru-RU")} ₽`;
-}
-
-function showPopup(className) {
-  document.querySelector(`.${className}`).style.display = "flex";
-}
-
-function hidePopup(className) {
-  document.querySelector(`.${className}`).style.display = "none";
 }

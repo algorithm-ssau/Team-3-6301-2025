@@ -1,0 +1,372 @@
+body {
+    padding: 50px 25px;
+}
+.recommended-card {
+    width: 100%;
+    max-width: 1440px;
+    height: 290px;
+    display: flex;
+    background-color: #fff;
+    padding: 20px;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 20px;
+    z-index: 1;
+}
+
+.card-img {
+    height: 100%;
+    width: auto;
+    cursor: pointer;
+}
+
+.card-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.content-header {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-crown {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: Stolzl;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--color-insperia-orange);
+    white-space: nowrap;
+}
+
+.header-crown img {
+    max-width: 20px;
+}
+
+.content-undertitle {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: Raleway;
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000B2;
+}
+
+.content-undertitle.mobile {
+    display: none;
+}
+
+.content-undertitle b {
+    font-family: Stolzl;
+    font-size: 14px;
+    margin-left: 5px;
+    color: #000;
+}
+
+.content-title {
+    display: block;
+    font-family: Stolzl;
+    font-size: 24px;
+    color: #000;
+}
+
+.content-description {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.description-text {
+    position: relative;
+    display: flex;
+    gap: 30px;
+    color: #000;
+    font-family: Raleway;
+    font-weight: 500;
+    font-size: 14px;
+
+}
+
+.description-text span {
+    display: flex;
+    justify-content: space-between;
+    max-width: 250px;
+}
+
+.description-text span::before {
+    content: url(https://insperia.ru/wp-content/uploads/2025/02/text-check.svg);
+    margin-right: 10px;
+    position: relative;
+    top: 2px;
+}
+
+.description-price {
+    font-family: Stolzl, Roboto;
+    position: relative;
+    height: fit-content;
+    font-size: 32px;
+    color: #000;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.description-price.desktop {
+    display: block;
+}
+
+.description-price.mobile {
+    margin-top: 10px;
+    display: none;
+}
+
+.description-price.withDiscount::after {
+    content: '*со скидкой в комплекте';
+    position: absolute;
+    font-size: 14px;
+    color: #0000007A;
+    top: 35px;
+    white-space: nowrap;
+
+    right: 0;
+}
+
+.description-price.mobile::after {
+    left: 0;
+}
+
+.description-price b {
+    font-size: 16px;
+    color: #0000007A;
+    font-weight: 200;
+    align-self: flex-end;
+}
+
+.description-price strike {
+    font-size: 20px;
+    color: #0000007A;
+    font-weight: 700;
+    align-self: flex-end;
+    position: relative;
+}
+
+.icon-sell {
+    background-color: var(--color-insperia-green);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    box-sizing: border-box;
+    padding: 1px 8px;
+    gap: 5px;
+    color: #000;
+    position: absolute;
+    top: -25px;
+    left: -5px;
+    font-weight: 400;
+    font-size: 16px;
+    font-family: Stolzl !important;
+
+}
+
+.icon-sell img {
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.icon-sell span {
+    width: fit-content;
+}
+
+.price-full {
+    display: flex;
+}
+
+.price-month {
+    display: flex;
+}
+
+.content-spliter {
+    background-color: #0000001A;
+    min-height: 1px;
+    width: 100%;
+    margin: 0;
+    border: 0;
+}
+
+.content-button {
+    display: flex;
+    justify-content: space-between;
+    height: 48px;
+    align-items: center;
+}
+
+.button-text {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 10px;
+}
+
+.text-tariff {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 10px;
+    color: #000;
+}
+
+.text-tariff span:first-child {
+    font-family: Stolzl;
+    font-weight: 500;
+    font-size: 12px;
+    color: #000000B2;
+}
+
+.text-tariff span:last-child {
+    font-family: Stolzl;
+    font-weight: 400;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.text-tariff span:last-child::after {
+    margin-left: 7px;
+    position: relative;
+    top: 2px;
+    content: url(https://insperia.ru/wp-content/uploads/2025/02/edit-black.svg);
+    cursor: pointer;
+}
+
+.button-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 160px;
+    box-sizing: border-box;
+    padding-top: 12px;
+    padding-right: 16px;
+    padding-bottom: 12px;
+    padding-left: 16px;
+    font-family: Stolzl;
+    font-weight: 400;
+    font-size: 16px;
+    color: #fff;
+    background-color: #000;
+    border: 2px solid #000;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.button-button:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+.button-button:hover span::before {
+    top: 0px;
+    content: url(https://insperia.ru/wp-content/uploads/2025/02/Frame-9.svg);
+
+}
+
+.button-button.added {
+    color: #000;
+    background-color: #fff;
+}
+
+.button-button.added span::before {
+    top: 0px;
+    content: url(https://insperia.ru/wp-content/uploads/2025/02/Frame-9.svg);
+}
+
+.button-price {
+    display: none;
+}
+
+.button-button span {
+    height: 28px;
+    display: flex;
+    align-items: center;
+}
+
+.button-button span::before {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    top: 3px;
+    content: url(https://insperia.ru/wp-content/uploads/2025/02/button-basket.svg);
+    margin-right: 12px;
+}
+
+.button-text.mobile {
+    display: none;
+}
+
+.content-spliter.mobile {
+    display: none;
+}
+
+.description-price.mobile {
+    display: none;
+}
+#start, #duration{
+    font-size: 16px;
+    width: 150px;
+    color: #000;
+    font-family: Stolzl;
+}
+#title{
+font-size: 24px;
+    color: #000;
+    width: 60%;
+    font-family: Stolzl;
+}
+.prices{
+    width: 100%;
+    max-width: 1440px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+.prices td{
+    border: 1px solid #000;
+    height: 40px;
+     font-size: 24px;
+     width: fit-content;
+}
+.prices td input{
+    height: 90%;
+    font-size: 20px;
+}
+.create-button{
+    background-color: var(--color-insperia-green);
+    padding: 15px 20px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+.code{
+    margin-top: 60px;
+    font-size: 24px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1440px;
+    padding: 20px 15px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    gap: 20px;
+}
+.code input{
+    font-size: 24px;
+}
