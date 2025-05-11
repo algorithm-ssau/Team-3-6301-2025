@@ -1,4 +1,4 @@
-class RecommendedCard {
+export class RecommendCard {
   subject;
   display = "flex";
   card;
@@ -16,7 +16,7 @@ class RecommendedCard {
   constructor(subject, toBasket) {
     this.subject = subject;
     this.callBack = toBasket;
-    this.cardId = `#recommended-card-${this.subject.name}`;
+    this.cardId = `.recommended-card.${this.subject.name}`;
     this.card = document.querySelector(this.cardId);
     this.tariffButton = this.card.querySelector(".button-showpopup");
     let text = `Старт <b>${this.subject.startText}</b>`;

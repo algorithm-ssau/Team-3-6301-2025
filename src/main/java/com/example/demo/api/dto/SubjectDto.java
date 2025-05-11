@@ -11,11 +11,10 @@ import java.util.List;
 @AllArgsConstructor
 public class SubjectDto {
     private String name;
+    private String title;
     private List<Integer> priceFull;
     private List<Integer> priceMonthly;
     private List<Integer> priceInstallment;
     private String startText;
     private String durationText;
-    private double durationNumber;
-    private String cardText;
 }

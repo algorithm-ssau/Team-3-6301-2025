@@ -1,5 +1,103 @@
+import { subjects } from "../Subjects.js";
+import { RecommendCard } from "./RecommendCard.js";
+import { ProductCard } from "./ProductCard.js";
+
+function loadCardTemplate(name) {
+  const tmpl = document.getElementById(name);
+  if (!tmpl) {
+    throw new Error(`Не найден <template id="${name}"> на странице`);
+  }
+  return tmpl.content;
+}
+
+let templateContent = await loadCardTemplate("productCard-template");
+// Создаём карточки
+subjects.forEach(async (subject) => {
+  // 1) клонируем шаблон
+  const clone = templateContent.cloneNode(true);
+
+  // 2) заполняем данными
+  clone.querySelector(".picked-card").classList.add(subject.name);
+  const imgEl = clone.querySelector(".card-img");
+  const titleEl = clone.querySelector(".content-title a");
+  const priceEls = clone.querySelectorAll(".description-price");
+  const imageUrl = `img/card/teacher-${subject.name}.png`;
+  try {
+    // Проверка существования через HEAD-запрос
+    const response = await fetch(imageUrl, { method: "HEAD" });
+
+    if (
+      response.ok &&
+      response.headers.get("Content-Type").startsWith("image/")
+    ) {
+      imgEl.src = imageUrl;
+    } else {
+      throw new Error("Image not found or invalid type");
+    }
+  } catch (error) {
+    console.warn(`Изображение ${imageUrl} недоступно, используем заглушку`);
+    imageUrl = `img/card/teacher-rus.png`;
+  }
+  if (imgEl) imgEl.src = imageUrl;
+  if (titleEl) titleEl.textContent = subject.name.toUpperCase();
+  priceEls.forEach((el) => (el.textContent = subject.priceFull[1] + " ₽"));
+  // — берём, например, второй тариф; подправьте логику по своему усмотрению
+
+  // 3) вешаем на кнопку коризны data-value
+  const button = clone.querySelector("button.button-button");
+  if (button) button.setAttribute("data-subject", subject.name);
+
+  // 4) вставляем в контейнер
+  document.querySelector(".content-cards").appendChild(clone);
+});
+
+templateContent = await loadCardTemplate("recommendCard-template");
+// Создаём карточки
+subjects.forEach(async (subject) => {
+  // 1) клонируем шаблон
+  const clone = templateContent.cloneNode(true);
+
+  // 2) заполняем данными
+  clone.querySelector(".recommended-card").classList.add(subject.name);
+  const imgEl = clone.querySelector(".card-img");
+  const titleEl = clone.querySelector(".content-title a");
+  const priceEls = clone.querySelectorAll(".description-price");
+  const imageUrl = `img/card/teacher-${subject.name}.png`;
+  try {
+    // Проверка существования через HEAD-запрос
+    const response = await fetch(imageUrl, { method: "HEAD" });
+
+    if (
+      response.ok &&
+      response.headers.get("Content-Type").startsWith("image/")
+    ) {
+      imgEl.src = imageUrl;
+    } else {
+      throw new Error("Image not found or invalid type");
+    }
+  } catch (error) {
+    console.warn(`Изображение ${imageUrl} недоступно, используем заглушку`);
+    imageUrl = `img/card/teacher-rus.png`;
+  }
+  if (imgEl) imgEl.src = imageUrl;
+  if (titleEl) titleEl.textContent = subject.name.toUpperCase();
+  priceEls.forEach((el) => (el.textContent = subject.priceFull[1] + " ₽"));
+  // — берём, например, второй тариф; подправьте логику по своему усмотрению
+
+  // 3) вешаем на кнопку коризны data-value
+  const button = clone.querySelector("button.button-button");
+  if (button) button.setAttribute("data-subject", subject.name);
+
+  // 4) вставляем в контейнер
+  document.querySelector(".basket-recommended").appendChild(clone);
+});
+
 const contentForm = document.querySelector("#content-form");
-const subjectsName = ["rus", "chem", "bio", "inf"];
+
+let subjectsName = [];
+subjects.forEach((subject) => {
+  subjectsName.push(subject.name);
+});
 let procuctList = [];
 let recommendedList = [];
 let priceType = "Помесячно";
@@ -14,7 +112,7 @@ subjectsName.forEach(function (name) {
     procuctList.push(
       new ProductCard(subjectData, removeBasket, findMaxTariffInBasket)
     );
-    recommendedList.push(new RecommendedCard(subjectData, toBasket));
+    recommendedList.push(new RecommendCard(subjectData, toBasket));
   } else {
     console.warn(`Предмет ${name} не найден в массиве subjects.`);
   }

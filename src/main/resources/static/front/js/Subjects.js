@@ -1,9 +1,9 @@
 async function fetchSubjects() {
   try {
-    const response = await fetch('/api/subjects', {
-      method: 'GET',
+    const response = await fetch("/api/subjects", {
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
 
@@ -13,9 +13,8 @@ async function fetchSubjects() {
 
     const data = await response.json();
     return data;
-
   } catch (error) {
-    console.error('Ошибка при получении данных:', error);
+    console.error("Ошибка при получении данных:", error);
     throw error;
   }
 }
@@ -23,19 +22,18 @@ async function fetchSubjects() {
 // Использование
 try {
   const subjectsData = await fetchSubjects();
-  console.log('Получены данные:', subjectsData);
+  console.log("Получены данные:", subjectsData);
 
   // Пример обработки данных
-  subjectsData.forEach(subject => {
+  subjectsData.forEach((subject) => {
     console.log(subject);
   });
-
 } catch (error) {
   // Обработка ошибок
-  console.error('Не удалось загрузить данные:', error);
+  console.error("Не удалось загрузить данные:", error);
 }
 
-const cardText = {
+export const cardText = {
   minimum: [
     "8−10 онлайн-вебинаров<br>в месяц (+ записи)",
     "4-5 видеоуроков в месяц",
@@ -60,9 +58,10 @@ const cardText = {
   ],
 };
 
-const subjects = [
+export const subjects = [
   {
     name: "rus",
+    title: "Курсы по Русскому языку",
     priceFull: [9860, 13770, 16760],
     priceMonthly: [4290, 5990, 7290],
     priceInstallment: [9860, 13770, 16760],
@@ -73,6 +72,7 @@ const subjects = [
   },
   {
     name: "inf",
+    title: "Курсы по Информатике",
     priceFull: [7695, 10745, 13075],
     priceMonthly: [4290, 5990, 7290],
     priceInstallment: [7695, 10745, 13075],
@@ -82,17 +82,8 @@ const subjects = [
     cardText: cardText,
   },
   {
-    name: "math",
-    priceFull: [9860, 10745, 16760],
-    priceMonthly: [4290, 5990, 7290],
-    priceInstallment: [9860, 13770, 16760],
-    startText: "18&nbsp;марта",
-    durationText: "2.5&nbsp;месяца",
-    durationNumber: 1,
-    cardText: cardText,
-  },
-  {
     name: "chem",
+    title: "Курсы по Химии",
     priceFull: [7695, 10745, 13075],
     priceMonthly: [4290, 5990, 7290],
     priceInstallment: [7695, 10745, 13075],
@@ -103,6 +94,7 @@ const subjects = [
   },
   {
     name: "bio",
+    title: "Курсы по Биологии",
     priceFull: [9860, 13770, 16760],
     priceMonthly: [4290, 5990, 7290],
     priceInstallment: [9860, 13770, 16760],

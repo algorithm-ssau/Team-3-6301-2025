@@ -1,4 +1,4 @@
-class ProductCard {
+export class ProductCard {
   subject;
   display = "none";
   card;
@@ -20,8 +20,10 @@ class ProductCard {
     this.subject = subject;
     this.callBack = removeBasket;
     this.callBackFindMaxTariffInBasket = findMaxTariffInBasket;
-    this.cardId = `#basket-card-${this.subject.name}`;
+    this.cardId = `.picked-card.${this.subject.name}`;
     this.card = document.querySelector(this.cardId);
+    console.log(this.card);
+
     let text = `Старт <b>${this.subject.startText}</b>`;
     if (this.subject.name === "chem") text = `<b>${this.subject.startText}</b>`;
     this.card.querySelector(".start").innerHTML = text;
@@ -72,7 +74,7 @@ class ProductCard {
 
   changePrice() {
     let index = this.tariffList.findIndex((tariff) => tariff === this.tariff);
-    if (priceType === "Помесячно") {
+    if (this.priceType === "Помесячно") {
       this.price = this.subject.priceMonthly[index];
     } else {
       this.price = this.subject.priceFull[index];

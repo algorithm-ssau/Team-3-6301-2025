@@ -1,118 +1,70 @@
-const recommendedRus = new RecommendCard(subjects[0]);
-const recommendedChem = new RecommendCard(subjects[3]);
-const recommendedInf = new RecommendCard(subjects[1]);
-const recommendedBio = new RecommendCard(subjects[4]);
-recommendedRus.priceType(recommendedRus.type);
-recommendedInf.priceType(recommendedInf.type);
-recommendedChem.priceType(recommendedChem.type);
-recommendedBio.priceType(recommendedBio.type);
+import { subjects } from "../Subjects.js";
+import { RecommendCard } from "./RecommendCard.js";
 
-function redirectImg(page) {
-  window.location.href = `/${page}`;
-}
+const cardsContainer = document.querySelector(".basket-recommended");
 
-function selectSubject(value) {
-  document.querySelector(".option-text").textContent = value;
-  switch (value) {
-    case "Все курсы":
-      document.getElementById("catalog-menu-1").checked = true;
-      selectAll();
-      break;
-    case "Русский язык":
-      document.getElementById("catalog-menu-2").checked = true;
-      select(".rus");
-      break;
-    case "Информатика":
-      document.getElementById("catalog-menu-3").checked = true;
-      select(".inf");
-      break;
-    case "Химия":
-      document.getElementById("catalog-menu-4").checked = true;
-      select(".chem");
-      break;
-    case "Биология":
-      document.getElementById("catalog-menu-6").checked = true;
-      select(".bio");
-      break;
-    case "Математика":
-      document.getElementById("catalog-menu-7").checked = true;
-      select(".math");
-      break;
+function loadCardTemplate() {
+  const tmpl = document.getElementById("card-template");
+  if (!tmpl) {
+    throw new Error('Не найден <template id="card-template"> на странице');
   }
+  return tmpl.content;
 }
-let subjectsMas = [".rus", ".inf", ".chem", ".bio", ".math"];
-function selectAll() {
-  subjectsMas.forEach(function (subject) {
-    displayFlex(".recommended-card" + subject);
-  });
-}
-function select(className) {
-  subjectsMas.forEach(function (subject) {
-    displayNone(".recommended-card" + subject);
-  });
-  displayFlex(".recommended-card" + className);
-}
-function displayNone(className) {
-  const elements = document.querySelectorAll(className);
-  elements.forEach((item) => {
-    item.style.display = "none";
-  });
-}
-function displayFlex(className) {
-  const elements = document.querySelectorAll(className);
-  elements.forEach((item) => {
-    item.style.display = "flex";
-  });
-}
+
+const templateContent = await loadCardTemplate();
+let cardList = [];
+// Создаём карточки
+subjects.forEach(async (subject) => {
+  // 1) клонируем шаблон
+  const clone = templateContent.cloneNode(true);
+
+  // 2) заполняем данными
+  clone.querySelector(".recommended-card").classList.add(subject.name);
+  const imgEl = clone.querySelector(".card-img");
+  const titleEl = clone.querySelector(".content-title a");
+  const priceEls = clone.querySelectorAll(".description-price");
+  const imageUrl = `img/card/teacher-${subject.name}.png`;
+  try {
+    // Проверка существования через HEAD-запрос
+    const response = await fetch(imageUrl, { method: "HEAD" });
+
+    if (
+      response.ok &&
+      response.headers.get("Content-Type").startsWith("image/")
+    ) {
+      imgEl.src = imageUrl;
+    } else {
+      throw new Error("Image not found or invalid type");
+    }
+  } catch (error) {
+    console.warn(`Изображение ${imageUrl} недоступно, используем заглушку`);
+    imageUrl = `img/card/teacher-rus.png`;
+  }
+  if (imgEl) imgEl.src = imageUrl;
+  if (titleEl) titleEl.textContent = subject.name.toUpperCase();
+  priceEls.forEach((el) => (el.textContent = subject.priceFull[1] + " ₽"));
+  // — берём, например, второй тариф; подправьте логику по своему усмотрению
+
+  // 3) вешаем на кнопку коризны data-value
+  const button = clone.querySelector("button.button-button");
+  if (button) button.setAttribute("data-subject", subject.name);
+
+  // 4) вставляем в контейнер
+  cardsContainer.appendChild(clone);
+});
+
+subjects.forEach((subject) => {
+  cardList.push(new RecommendCard(subject));
+});
+
 function readBasket() {
-  let subjects = ["rus", "chem", "inf", "bio"];
   let counter = 0;
   subjects.forEach((subject) => {
-    if (localStorage.getItem(subject + "-display") == "flex") {
-      const button = document.querySelector(".button-button." + subject);
-      button.classList.add("added");
-      button.innerHTML = "В корзине";
+    if (localStorage.getItem(subject.name + "-display") === "flex") {
       counter++;
     }
   });
   document.querySelector("#basket-fixed-counter").textContent = counter;
 }
+
 readBasket();
-function toBasket(value) {
-  localStorage.setItem(value + "-display", "flex");
-  localStorage.setItem("tariff-" + value, "Стандарт");
-  showBasketPopup();
-  readBasket();
-  recommendedRus.priceType(recommendedRus.type);
-  recommendedInf.priceType(recommendedInf.type);
-  recommendedChem.priceType(recommendedChem.type);
-  recommendedBio.priceType(recommendedBio.type);
-}
-function makeDiscount() {
-  recommendedRus.removeDiscount();
-  recommendedChem.removeDiscount();
-  recommendedBio.removeDiscount();
-  if (localStorage.getItem("rus-display") == "flex") {
-    recommendedChem.makeDiscount();
-    recommendedBio.makeDiscount();
-  } else if (localStorage.getItem("chem-display") == "flex") {
-    recommendedRus.makeDiscount();
-    recommendedBio.makeDiscount();
-  } else if (localStorage.getItem("bio-display") == "flex") {
-    recommendedRus.makeDiscount();
-    recommendedChem.makeDiscount();
-  }
-}
-makeDiscount();
-function showBasketPopup() {
-  document.querySelector(".popup-basket").style.display = "flex";
-}
-function hideBasketPopup() {
-  document.querySelector(".popup-basket").style.display = "none";
-}
-function showFakePopup() {
-  document.querySelector(".popup-fake").style.display = "flex";
-}
-function hideFakePopup() {
-  document.querySelector(".popup-fake").style.display = "none";
-}

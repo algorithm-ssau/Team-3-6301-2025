@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/catalog.css" />
+    <meta charset="UTF-8" />
     <title>Каталог</title>
   </head>
 
@@ -77,25 +78,6 @@
           <!--<div class="option" onclick="selectOption('Математика')">Математика</div>-->
         </div>
       </div>
-      <script>
-        function toggleDropdown() {
-          const options = document.querySelector(".options");
-          const img = document.querySelector(".selected-img");
-          options.style.display =
-            options.style.display === "block" ? "none" : "block";
-          img.style.transform =
-            options.style.display === "block"
-              ? "rotate(180deg)"
-              : "rotate(0deg)";
-        }
-
-        function selectOption(value) {
-          document.querySelector(".options").style.display = "none";
-          document.querySelector(".selected-img").style.transform =
-            "rotate(0deg)";
-          selectSubject(value);
-        }
-      </script>
       <div class="catalog-baner">
         <span
           >*скидка 50% распространяется на второй, третий и четвертый
@@ -103,204 +85,61 @@
         >
       </div>
       <div class="basket-recommended">
-        <div class="recommended-card rus">
-          <img class="card-img" alt="" src="img/card/teacher-rus.png" />
-          <div class="card-content">
-            <div class="content-header">
-              <div class="header-crown">
-                <img alt="" src="img/card/card-crown.svg" />
-                <span>Старший эксперт ЕГЭ</span>
+        <template id="card-template">
+          <div class="recommended-card">
+            <img class="card-img" alt="" src="img/card/teacher-rus.png" />
+            <div class="card-content">
+              <div class="content-header">
+                <div class="header-crown">
+                  <img alt="" src="img/card/card-crown.svg" />
+                  <span>Старший эксперт ЕГЭ</span>
+                </div>
+                <div class="content-undertitle desktop">
+                  <span class="start">Старт <b>1&nbsp;марта</b></span>
+                  <span class="duration"
+                    >Длительность <b>3,5&nbsp;месяца</b></span
+                  >
+                </div>
               </div>
-              <div class="content-undertitle desktop">
-                <span class="start-rus">Старт <b>1&nbsp;марта</b></span>
-                <span class="duration-rus"
+              <div class="content-title">
+                <a href="#"
+                  >Обобщающий курс «Еще чуть-чуть — и соточка!» по русскому
+                  языку</a
+                >
+              </div>
+              <div class="content-undertitle mobile">
+                <span class="start">Старт <b>1&nbsp;марта</b></span>
+                <span class="duration"
                   >Длительность <b>3,5&nbsp;месяца</b></span
                 >
               </div>
-            </div>
-            <div class="content-title">
-              <a href="#"
-                >Обобщающий курс «Еще чуть-чуть — и соточка!» по русскому
-                языку</a
-              >
-            </div>
-            <div class="content-undertitle mobile">
-              <span class="start-rus">Старт <b>1&nbsp;марта</b></span>
-              <span class="duration-rus"
-                >Длительность <b>3,5&nbsp;месяца</b></span
-              >
-            </div>
-            <div class="content-description">
-              <div class="description-text">
-                <span>8–10 онлайн-занятий в месяц</span>
-                <span
-                  >доступ к домашним заданиями, видеоурокам, полезным карточкам
-                  и конспектам</span
-                >
-                <span>личные ответы на все вопросы по теории и практике</span>
-              </div>
-              <span class="description-price desktop rus">13 770 ₽</span>
-            </div>
-            <hr class="content-spliter" />
-            <div class="content-button">
-              <div class="button-text">
-                <div class="text-tariff">
-                  <span>Тариф</span><span class="tariff-rec-rus">Стандарт</span>
+              <div class="content-description">
+                <div class="description-text">
+                  <span>8–10 онлайн-занятий в месяц</span>
+                  <span
+                    >доступ к домашним заданиями, видеоурокам, полезным
+                    карточкам и конспектам</span
+                  >
+                  <span>личные ответы на все вопросы по теории и практике</span>
                 </div>
-                <hr class="content-spliter mobile" />
-                <span class="description-price mobile rus">13 770 ₽</span>
+                <span class="description-price desktop">13 770 ₽</span>
               </div>
-              <button class="button-button rus" onclick="toBasket('rus')">
-                <span>В корзину</span>
-              </button>
+              <hr class="content-spliter" />
+              <div class="content-button">
+                <div class="button-text">
+                  <div class="text-tariff">
+                    <span>Тариф</span><span class="tariff-rec">Стандарт</span>
+                  </div>
+                  <hr class="content-spliter mobile" />
+                  <span class="description-price mobile">13 770 ₽</span>
+                </div>
+                <button class="button-button">
+                  <span>В корзину</span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="recommended-card chem">
-          <img class="card-img" alt="" src="img/card/teacher-chem.png" />
-          <div class="card-content">
-            <div class="content-header" style="justify-content: end">
-              <div class="content-undertitle desktop">
-                <span class="start-chem">Старт <b>1&nbsp;марта</b></span>
-                <span class="duration-chem"
-                  >Длительность <b>3,5&nbsp;месяца</b></span
-                >
-              </div>
-            </div>
-            <div class="content-title">
-              <a href="#"
-                >Обобщающий курс «Еще чуть-чуть — и соточка!» по химии</a
-              >
-            </div>
-            <div class="content-undertitle mobile">
-              <span class="start-chem">Старт <b>1&nbsp;марта</b></span>
-              <span class="duration-chem"
-                >Длительность <b>3,5&nbsp;месяца</b></span
-              >
-            </div>
-            <div class="content-description">
-              <div class="description-text">
-                <span>13+ онлайн-занятий в месяц</span>
-                <span
-                  >доступ к домашним заданиям, видеоурокам, полезным карточкам и
-                  конспектам</span
-                >
-                <span>личные ответы на все вопросы по теории и практике</span>
-              </div>
-              <span class="description-price desktop chem">10 745 ₽</span>
-            </div>
-            <hr class="content-spliter" />
-            <div class="content-button">
-              <div class="button-text">
-                <div class="text-tariff">
-                  <span>Тариф</span
-                  ><span class="tariff-rec-chem">Стандарт</span>
-                </div>
-                <hr class="content-spliter mobile" />
-                <span class="description-price mobile chem">10 745 ₽</span>
-              </div>
-              <button class="button-button chem" onclick="toBasket('chem')">
-                <span>В корзину</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="recommended-card bio">
-          <img class="card-img" alt="" src="img/card/teacher-bio.png" />
-          <div class="card-content">
-            <div class="content-header" style="justify-content: end">
-              <div class="content-undertitle desktop">
-                <span class="start-bio">Старт <b>1&nbsp;марта</b></span>
-                <span class="duration-bio"
-                  >Длительность <b>3,5&nbsp;месяца</b></span
-                >
-              </div>
-            </div>
-            <div class="content-title">
-              <a href="#"
-                >Обобщающий курс «Еще чуть-чуть — и соточка!» по биологии</a
-              >
-            </div>
-            <div class="content-undertitle mobile">
-              <span class="start-bio">Старт <b>1&nbsp;марта</b></span>
-              <span class="duration-bio"
-                >Длительность <b>3,5&nbsp;месяца</b></span
-              >
-            </div>
-            <div class="content-description">
-              <div class="description-text">
-                <span>13+ онлайн-занятий в месяц</span>
-                <span
-                  >доступ к домашним заданиям, видеоурокам, полезным карточкам и
-                  конспектам</span
-                >
-                <span>личные ответы на все вопросы по теории и практике</span>
-              </div>
-              <span class="description-price desktop bio">10 745 ₽</span>
-            </div>
-            <hr class="content-spliter" />
-            <div class="content-button">
-              <div class="button-text">
-                <div class="text-tariff">
-                  <span>Тариф</span><span class="tariff-rec-bio">Стандарт</span>
-                </div>
-                <hr class="content-spliter mobile" />
-                <span class="description-price mobile bio">10 745 ₽</span>
-              </div>
-              <button class="button-button bio" onclick="toBasket('bio')">
-                <span>В корзину</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="recommended-card inf">
-          <img class="card-img" alt="" src="img/card/teacher-inf.png" />
-          <div class="card-content">
-            <div class="content-header" style="justify-content: end">
-              <div class="content-undertitle desktop">
-                <span class="start-inf">Старт <b>1&nbsp;марта</b></span>
-                <span class="duration-inf"
-                  >Длительность <b>3,5&nbsp;месяца</b></span
-                >
-              </div>
-            </div>
-            <div class="content-title">
-              <a href="#"
-                >Обобщающий курс «Еще чуть-чуть — и соточка!» по информатике</a
-              >
-            </div>
-            <div class="content-undertitle mobile">
-              <span class="start-inf">Старт <b>1&nbsp;марта</b></span>
-              <span class="duration-inf"
-                >Длительность <b>3,5&nbsp;месяца</b></span
-              >
-            </div>
-            <div class="content-description">
-              <div class="description-text">
-                <span>8–10 онлайн-занятий в месяц</span>
-                <span
-                  >доступ к домашним заданиям и их разборам, полезным карточкам
-                  и конспектам</span
-                >
-                <span>личные ответы на все вопросы по теории и практике</span>
-              </div>
-              <span class="description-price desktop inf">10 745 ₽</span>
-            </div>
-            <hr class="content-spliter" />
-            <div class="content-button">
-              <div class="button-text">
-                <div class="text-tariff">
-                  <span>Тариф</span><span class="tariff-rec-inf">Стандарт</span>
-                </div>
-                <hr class="content-spliter mobile" />
-                <span class="description-price mobile inf">10 745 ₽</span>
-              </div>
-              <button class="button-button inf" onclick="toBasket('inf')">
-                <span>В корзину</span>
-              </button>
-            </div>
-          </div>
-        </div>
+        </template>
       </div>
     </div>
     <div class="popup-fake popup">
@@ -327,7 +166,7 @@
           <div class="popup-basket__button" onclick="hideBasketPopup()">
             Продолжить выбор
           </div>
-          <a href="/cart" class="popup-basket__button white"
+          <a href="/front/basket.html" class="popup-basket__button white"
             >Перейти в корзину</a
           >
         </div>
@@ -521,10 +360,11 @@
       <span id="basket-fixed-counter">0</span>
     </a>
     <script src="js/loadHeader.js"></script>
-    <script src="js/Subjects.js"></script>
+    <script src="js/catalog/Menu.js"></script>
+    <script type="module" src="js/Subjects.js"></script>
     <script src="js/Swipe.js"></script>
-    <script src="js/catalog/RecommendCard.js"></script>
+    <script type="module" src="js/catalog/RecommendCard.js"></script>
     <script src="js/catalog/Popup.js"></script>
-    <script src="js/catalog/Main.js"></script>
+    <script type="module" src="js/catalog/Main.js"></script>
   </body>
 </html>
