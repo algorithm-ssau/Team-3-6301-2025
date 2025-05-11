@@ -16,9 +16,8 @@ CREATE TABLE subject (
                          name             TEXT        NOT NULL UNIQUE,
                          title            VARCHAR(255) NOT NULL DEFAULT '',      -- <— добавили с DEFAULT
                          start_text       TEXT        NOT NULL,
-                         duration_text    TEXT        NOT NULL,
-                         duration_number  NUMERIC     NOT NULL,
-                         card_text_id     INT         REFERENCES card_text(id)
+                         duration_text    TEXT        NOT NULL
+
 );
 
 -- 4. Цены предметов
@@ -38,11 +37,11 @@ INSERT INTO card_text(text) VALUES
     ('Текст карточки курса');
 
 -- Пример вставки предметов с title = name (или любой вашей логикой)
-INSERT INTO subject(name, title, start_text, duration_text, duration_number, card_text_id) VALUES
-                                                                                               ('rus',  'Русский язык', '18 марта', '2.5 месяца', 1, 1),
-                                                                                               ('inf',  'Информатика','3 апреля',  '2 месяца',    1, 1),
-                                                                                               ('math', 'Математика','18 марта', '2.5 месяца', 1, 1),
-                                                                                               ('chem', 'Химия',     '21 марта', '2 месяца',    1, 1),
-                                                                                               ('bio',  'Биология',  '24 марта', '2.5 месяца', 2.5, 1);
+INSERT INTO subject(name, title, start_text, duration_text) VALUES
+                                                                                               ('rus',  'Русский язык', '18 марта', '2.5 месяца'),
+                                                                                               ('inf',  'Информатика','3 апреля',  '2 месяца'  ),
+                                                                                               ('math', 'Математика','18 марта', '2.5 месяца'),
+                                                                                               ('chem', 'Химия',     '21 марта', '2 месяца'),
+                                                                                               ('bio',  'Биология',  '24 марта', '2.5 месяца');
 
 -- И далее ваши INSERT INTO subject_price…
