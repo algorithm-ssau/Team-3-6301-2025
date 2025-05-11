@@ -22,8 +22,7 @@ export class ProductCard {
     this.callBackFindMaxTariffInBasket = findMaxTariffInBasket;
     this.cardId = `.picked-card.${this.subject.name}`;
     this.card = document.querySelector(this.cardId);
-    console.log(this.card);
-
+    this.card.querySelector(".content-title a").innerHTML = this.subject.title;
     let text = `Старт <b>${this.subject.startText}</b>`;
     if (this.subject.name === "chem") text = `<b>${this.subject.startText}</b>`;
     this.card.querySelector(".start").innerHTML = text;

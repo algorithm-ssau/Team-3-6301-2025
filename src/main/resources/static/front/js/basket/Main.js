@@ -31,7 +31,7 @@ subjects.forEach(async (subject) => {
 
   // 2) заполняем данными
   clone.querySelector(".picked-card").classList.add(subject.name);
-  const imgEl = clone.querySelector(".card-img");
+  const imgEl = clone.querySelector(".card-img img");
   const titleEl = clone.querySelector(".content-title a");
   const priceEls = clone.querySelectorAll(".description-price");
   const imageUrl = `img/card/teacher-${subject.name}.png`;
@@ -61,7 +61,7 @@ subjects.forEach(async (subject) => {
   if (button) button.setAttribute("data-subject", subject.name);
 
   // 4) вставляем в контейнер
-  document.querySelector(".content-cards").appendChild(clone);
+  document.querySelector(".content-cards").prepend(clone);
   procuctList.push(
     new ProductCard(subject, removeBasket, findMaxTariffInBasket)
   );
@@ -105,7 +105,7 @@ subjects.forEach(async (subject) => {
   if (button) button.setAttribute("data-subject", subject.name);
 
   // 4) вставляем в контейнер
-  document.querySelector(".basket-recommended").appendChild(clone);
+  document.querySelector(".basket-recommended").append(clone);
   recommendedList.push(new RecommendCard(subject, toBasket));
 });
 
@@ -187,6 +187,16 @@ function removeBasket(name) {
   }
   makeDiscount();
 }
+document
+  .querySelector("#change-type-1")
+  .addEventListener("click", changePriceType("В рассрочку"));
+document
+  .querySelector("#change-type-2")
+  .addEventListener("click", changePriceType("Помесячно"));
+
+document
+  .querySelector("#change-type-3")
+  .addEventListener("click", changePriceType("Полная оплата"));
 
 function changePriceType(newPriceType) {
   priceType = newPriceType;
