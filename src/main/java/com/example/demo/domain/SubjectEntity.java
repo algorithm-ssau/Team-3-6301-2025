@@ -21,8 +21,6 @@ public class SubjectEntity {
     private String startText;
     @Column(name = "duration_text", nullable = false)
     private String durationText;
-    @Column(name = "duration_number", nullable = false)
-    private double durationNumber;
     @Column(nullable = false)
     private String title;
     @ManyToOne(fetch = FetchType.LAZY)
