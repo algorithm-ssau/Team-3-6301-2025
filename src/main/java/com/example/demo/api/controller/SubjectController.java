@@ -36,4 +36,12 @@ public class SubjectController {
         service.deleteByName(name);
         return ResponseEntity.noContent().build();
     }
+    @PutMapping("/{name}")
+    public ResponseEntity<SubjectDto> update(
+            @PathVariable String name,
+            @RequestBody SubjectDto dto
+    ) {
+        SubjectDto updated = service.update(name, dto);
+        return ResponseEntity.ok(updated);
+    }
 }

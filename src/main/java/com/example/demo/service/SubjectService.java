@@ -61,6 +61,32 @@ public class SubjectService {
         // Удалим — благодаря каскаду очистятся и цены
         subjectRepo.delete(subject);
     }
+    @Transactional
+    public SubjectDto update(String name, SubjectDto dto) {
+        // 1) Найти существующий SubjectEntity
+        SubjectEntity subject = subjectRepo.findByName(name)
+                .orElseThrow(() -> new EntityNotFoundException("Subject not found: " + name));
+
+        // 2) Обновить простые поля
+        subject.setTitle(dto.getTitle());
+        subject.setStartText(dto.getStartText());
+        subject.setDurationText(dto.getDurationText());
+        // если нужно менять сам ключ name:
+        // subject.setName(dto.getName());
+
+        subject = subjectRepo.save(subject);
+
+        // 3) Перезалить цены: удаляем старые и вставляем новые
+        List<SubjectPriceEntity> old = priceRepo.findBySubjectIdOrderByPriceTypeIdAscTierAsc(subject.getId());
+        priceRepo.deleteAll(old);
+
+        insertPrices(subject, "full", dto.getPriceFull());
+        insertPrices(subject, "monthly", dto.getPriceMonthly());
+        insertPrices(subject, "installment", dto.getPriceInstallment());
+
+        // 4) Вернуть обновлённый DTO
+        return toDto(subject);
+    }
 
     private void insertPrices(SubjectEntity subject, String typeName, List<Integer> amounts) {
         PriceTypeEntity type = priceTypeRepo.findByName(typeName)
