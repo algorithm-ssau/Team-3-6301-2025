@@ -152,7 +152,7 @@ export class ProductCard {
   }
 
   inBasket() {
-    if (this.display == "flex") return true;
+    if (this.display === "flex") return true;
     else return false;
   }
 

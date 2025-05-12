@@ -144,7 +144,7 @@ function toBasket(name) {
         productCard.hideCard(removeBasket);
       }
     } else if (name !== "rus") {
-      if (productInf.inBasket()) {
+      if (productInf && productInf.inBasket()) {
         let sub = "Биология";
         if (name === "chem") sub = "Химия";
         document.querySelector(
@@ -187,18 +187,9 @@ function removeBasket(name) {
   }
   makeDiscount();
 }
-document
-  .querySelector("#change-type-1")
-  .addEventListener("click", changePriceType("В рассрочку"));
-document
-  .querySelector("#change-type-2")
-  .addEventListener("click", changePriceType("Помесячно"));
-
-document
-  .querySelector("#change-type-3")
-  .addEventListener("click", changePriceType("Полная оплата"));
 
 function changePriceType(newPriceType) {
+  console.log(newPriceType);
   priceType = newPriceType;
   procuctList.forEach(function (product) {
     product.changePriceType(priceType);
@@ -208,6 +199,16 @@ function changePriceType(newPriceType) {
   });
   makeDiscount();
 }
+document
+  .querySelector("#change-type-1")
+  .addEventListener("click", () => changePriceType("В рассрочку"));
+document
+  .querySelector("#change-type-2")
+  .addEventListener("click", () => changePriceType("Помесячно"));
+
+document
+  .querySelector("#change-type-3")
+  .addEventListener("click", () => changePriceType("Полная оплата"));
 
 function returnFromList(list, name) {
   return list.find((card) => card.subject.name === name);
@@ -405,22 +406,4 @@ function updateForm() {
   } else {
     document.querySelector("#priceWithOutDiscount").innerHTML = "";
   }
-  document.querySelector(".eco-value").innerHTML = `${(
-    price - priceWithDiscount
-  ).toLocaleString("ru-RU")} ₽ /мес`;
-
-  if (priceType !== "Помесячно") {
-    document.querySelector(".eco-value").innerHTML = `${(
-      price -
-      priceWithDiscount +
-      difference
-    ).toLocaleString("ru-RU")} ₽`;
-  }
-
-  document.querySelector(
-    "#difference"
-  ).innerHTML = `- ${difference.toLocaleString("ru-RU")} ₽`;
-  document.querySelector(
-    "#difference2"
-  ).innerHTML = `- ${difference.toLocaleString("ru-RU")} ₽`;
 }
