@@ -31,4 +31,9 @@ public class SubjectController {
                 .status(HttpStatus.CREATED)
                 .body(saved);
     }
+    @DeleteMapping("/{name}")
+    public ResponseEntity<Void> delete(@PathVariable String name) {
+        service.deleteByName(name);
+        return ResponseEntity.noContent().build();
+    }
 }

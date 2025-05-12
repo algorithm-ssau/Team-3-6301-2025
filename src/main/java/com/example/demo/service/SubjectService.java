@@ -9,6 +9,7 @@ import com.example.demo.repository.CardTextRepository;
 import com.example.demo.repository.PriceTypeRepository;
 import com.example.demo.repository.SubjectPriceRepository;
 import com.example.demo.repository.SubjectRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,6 +52,14 @@ public class SubjectService {
 
         // 3) Возвращаем DTO
         return toDto(subject);
+    }
+    @Transactional
+    public void deleteByName(String name) {
+        // Найдём сущность
+        SubjectEntity subject = subjectRepo.findByName(name)
+                .orElseThrow(() -> new EntityNotFoundException("Subject not found: " + name));
+        // Удалим — благодаря каскаду очистятся и цены
+        subjectRepo.delete(subject);
     }
 
     private void insertPrices(SubjectEntity subject, String typeName, List<Integer> amounts) {
