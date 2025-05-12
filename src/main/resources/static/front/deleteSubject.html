@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/createSubject.css" />
+    <link rel="stylesheet" href="css/deleteSubject.css" />
+    <meta charset="UTF-8" />
+    <title>Удаление предмета</title>
+  </head>
+
+  <body>
+    <template id="recommendCard-template"
+      ><div class="recommended-card">
+        <img
+          class="card-img"
+          alt=""
+          src="img/card/banner-rus.png"
+          href="/rus"
+        />
+        <div class="card-content">
+          <div class="content-header">
+            <div class="header-crown">
+              <img alt="" src="img/card/card-crown.svg" />
+              <span>Старший эксперт ЕГЭ</span>
+            </div>
+            <div class="content-undertitle desktop">
+              <span class="start">Старт <b>1&nbsp;марта</b></span>
+              <span class="duration">Длительность <b>3,5&nbsp;месяца</b></span>
+            </div>
+          </div>
+          <div class="content-title">
+            <a href="#">Спринт «УЛЬТРА» по русскому языку</a>
+          </div>
+          <div class="content-undertitle mobile">
+            <span class="start">Старт <b>1&nbsp;марта</b></span>
+            <span class="duration">Длительность <b>3,5&nbsp;месяца</b></span>
+          </div>
+          <div class="content-description">
+            <div class="description-text">
+              <span>8–10 онлайн-занятий в месяц</span>
+              <span
+                >доступ к домашним заданиями, видеоурокам, полезным карточкам и
+                конспектам</span
+              >
+              <span>личные ответы на все вопросы по теории и практике</span>
+            </div>
+          </div>
+          <hr class="content-spliter" />
+          <span class="delete">Удалить</span>
+          </div>
+        </div>
+      </div></template
+    >
+    <script src="js/loadHeader.js"></script>
+    <script type="module" src="js/Subjects.js"></script>
+    <script type="module" src="js/deleteSubject/Main.js"></script>
+  </body>
+</html>

@@ -64,6 +64,9 @@ export class RecommendCard {
       this.price = this.subject.priceFull[index];
     }
     const priceField = this.card.querySelector(`.description-price.desktop`);
+    if (!this.price) {
+      this.price = 1000;
+    }
     priceField.innerHTML = `${this.price.toLocaleString("ru-RU")} ${
       this.priceEnd
     }`;

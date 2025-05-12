@@ -1,0 +1,13 @@
+.delete {
+    padding: 15px 10px ;
+    background-color: red;
+    color: white;
+    font-size: 16px;
+    font-family: Stolzl;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    max-width: 150px;
+    border-radius: 2px;
+}

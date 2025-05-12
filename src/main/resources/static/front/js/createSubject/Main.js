@@ -56,8 +56,7 @@ document.querySelector(".create-button").addEventListener("click", async () => {
     const result = await response.json();
     console.log("Предмет успешно создан:", result);
 
-    // Обновляем список предметов
-    await fetchSubjects();
+    window.location.href = "/front/catalog.html";
   } catch (error) {
     console.error("Ошибка при создании предмета:", error);
   }

@@ -34,7 +34,7 @@ subjects.forEach(async (subject) => {
   const imgEl = clone.querySelector(".card-img img");
   const titleEl = clone.querySelector(".content-title a");
   const priceEls = clone.querySelectorAll(".description-price");
-  const imageUrl = `img/card/teacher-${subject.name}.png`;
+  let imageUrl = `img/card/teacher-${subject.name}.png`;
   try {
     // Проверка существования через HEAD-запрос
     const response = await fetch(imageUrl, { method: "HEAD" });
@@ -78,7 +78,7 @@ subjects.forEach(async (subject) => {
   const imgEl = clone.querySelector(".card-img");
   const titleEl = clone.querySelector(".content-title a");
   const priceEls = clone.querySelectorAll(".description-price");
-  const imageUrl = `img/card/teacher-${subject.name}.png`;
+  let imageUrl = `img/card/teacher-${subject.name}.png`;
   try {
     // Проверка существования через HEAD-запрос
     const response = await fetch(imageUrl, { method: "HEAD" });

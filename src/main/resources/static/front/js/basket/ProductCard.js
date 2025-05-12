@@ -82,6 +82,9 @@ export class ProductCard {
       this.subject.priceMonthly[index] * this.subject.durationNumber -
       this.subject.priceFull[index];
     const priceField = this.card.querySelector(`.description-price`);
+    if (!this.price) {
+      this.price = 1000;
+    }
     priceField.innerHTML = `${this.price.toLocaleString("ru-RU")} ${
       this.priceEnd
     }`;
