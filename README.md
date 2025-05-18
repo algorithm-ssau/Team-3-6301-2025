@@ -1,4 +1,3 @@
-
 Для того чтобы запустить проект необходимо:
 1) Скачать проект
 2) Открыть с помощью intelij idea
@@ -11,8 +10,15 @@
 
 
 
-Информация о разработчиках:
-1. Смирнов Виктор - Sm1rnov10
-2. Цуканов Егор - korgi12
-3. Замулин Арсений - zamulinarsenii
-4. Рязанцев Даниил - DaniilRyazan
+# Доступ к сайту
+
+Сайт доступен по адресу: [https://insperia.ru](https://insperia.ru)
+
+---
+
+## Информация о разработчиках
+
+- **Смирнов Виктор** ([Sm1rnov10](https://github.com/Sm1rnov10))
+- **Цуканов Егор** ([korgi12](https://github.com/korgi12))  
+- **Замулин Арсений** ([zamulinarsenii](https://github.com/zamulinarsenii))
+- **Рязанцев Даниил** ([DaniilRyazan](https://github.com/DaniilRyazan))  
